@@ -1,0 +1,30 @@
+HTTP/1.1 200 OK
+Date: Wed, 11 Nov 2026 05:35:59 GMT
+Content-Type: application/octet-stream
+Content-Length: 2149376
+Connection: keep-alive
+CF-Ray: a58aefc8980f564c-DEL
+CF-Cache-Status: BYPASS
+Accept-Ranges: bytes
+Cache-Control: no-cache
+Content-Disposition: attachment; filename="roundingsat.exe"
+ETag: "fff53b79265ee2c67bb499df5889a8ec5d0549a546ddfd0d458b3305d9a4a2da"
+Server: cloudflare
+Strict-Transport-Security: max-age=31536000
+Vary: Origin
+content-security-policy: default-src 'none'
+gitlab-lb: haproxy-main-http-us-east1-d-865979db98-56txv
+gitlab-sv: api-gke-us-east1-d
+nel: {"max_age": 0}
+ratelimit-limit: 500
+ratelimit-name: throttle_unauthenticated_api
+ratelimit-observed: 1
+ratelimit-remaining: 499
+ratelimit-reset: 1794375360
+referrer-policy: strict-origin-when-cross-origin
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-gitlab-meta: {"correlation_id":"a58aefc8980f564c-DEL","version":"1"}
+x-request-id: a58aefc8980f564c-DEL
+x-runtime: 0.117645
+
