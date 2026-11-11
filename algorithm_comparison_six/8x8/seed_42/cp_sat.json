@@ -1,0 +1,282 @@
+{
+  "algorithm": "cp_sat",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 0.040184,
+    "preprocessing_time_seconds": 0.000946,
+    "model_build_time_seconds": 0.000946,
+    "search_time_seconds": 0.039238,
+    "ga_time_seconds": null,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": null,
+    "generations_evaluated": null,
+    "backtracking_count": null,
+    "search_branches": 2892,
+    "search_nodes": null,
+    "cp_sat_conflicts": 1,
+    "solver_status": "OPTIMAL",
+    "solution_valid": true,
+    "ga_solution_valid": null,
+    "fallback_used": false,
+    "best_ga_fitness": null,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": null,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 39,
+    "white_cells_total": 39,
+    "run_count": 17,
+    "domain_reduction_percent": null,
+    "solution_validity_rate_percent": 100.0
+  },
+  "ga_diagnostics": null,
+  "solver_diagnostics": {
+    "status": "OPTIMAL",
+    "branches": 2892,
+    "backtracking_count": null,
+    "conflicts": 1,
+    "nodes_visited": null,
+    "execution_time_seconds": 0.040184199810028076,
+    "preprocessing_time_seconds": 0.0009460002183914185,
+    "model_build_time_seconds": 0.0009460002183914185,
+    "search_time_seconds": 0.03923819959163666,
+    "domain_reduction_percent": null,
+    "cp_sat_status": "OPTIMAL",
+    "cp_sat_wall_time_seconds": 0.037933100000000004,
+    "deterministic_time": 0.008759576045955848,
+    "ortools_version": "9.15.6755"
+  },
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 38
+      },
+      {
+        "down": 33
+      },
+      {
+        "down": 28
+      },
+      {
+        "down": 20
+      },
+      {
+        "down": 18
+      },
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 30
+      },
+      9,
+      3,
+      5,
+      7,
+      6,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 28
+      },
+      2,
+      9,
+      4,
+      6,
+      7,
+      {
+        "down": 25
+      },
+      {
+        "down": 27
+      }
+    ],
+    [
+      {
+        "across": 28
+      },
+      5,
+      6,
+      7,
+      4,
+      1,
+      2,
+      3
+    ],
+    [
+      {
+        "across": 35
+      },
+      1,
+      7,
+      6,
+      3,
+      4,
+      5,
+      9
+    ],
+    [
+      {
+        "across": 15
+      },
+      7,
+      5,
+      3,
+      "#",
+      {
+        "across": 17
+      },
+      9,
+      8
+    ],
+    [
+      {
+        "across": 11
+      },
+      8,
+      1,
+      2,
+      "#",
+      {
+        "across": 10
+      },
+      8,
+      2
+    ],
+    [
+      {
+        "across": 9
+      },
+      6,
+      2,
+      1,
+      "#",
+      {
+        "across": 6
+      },
+      1,
+      5
+    ]
+  ],
+  "ga_best_grid": null,
+  "best_candidate_grid": [
+    [
+      "#",
+      {
+        "down": 38
+      },
+      {
+        "down": 33
+      },
+      {
+        "down": 28
+      },
+      {
+        "down": 20
+      },
+      {
+        "down": 18
+      },
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 30
+      },
+      9,
+      3,
+      5,
+      7,
+      6,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 28
+      },
+      2,
+      9,
+      4,
+      6,
+      7,
+      {
+        "down": 25
+      },
+      {
+        "down": 27
+      }
+    ],
+    [
+      {
+        "across": 28
+      },
+      5,
+      6,
+      7,
+      4,
+      1,
+      2,
+      3
+    ],
+    [
+      {
+        "across": 35
+      },
+      1,
+      7,
+      6,
+      3,
+      4,
+      5,
+      9
+    ],
+    [
+      {
+        "across": 15
+      },
+      7,
+      5,
+      3,
+      "#",
+      {
+        "across": 17
+      },
+      9,
+      8
+    ],
+    [
+      {
+        "across": 11
+      },
+      8,
+      1,
+      2,
+      "#",
+      {
+        "across": 10
+      },
+      8,
+      2
+    ],
+    [
+      {
+        "across": 9
+      },
+      6,
+      2,
+      1,
+      "#",
+      {
+        "across": 6
+      },
+      1,
+      5
+    ]
+  ]
+}

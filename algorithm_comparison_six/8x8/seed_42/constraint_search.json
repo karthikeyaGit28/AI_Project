@@ -1,0 +1,282 @@
+{
+  "algorithm": "constraint_search",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 0.054781,
+    "preprocessing_time_seconds": 0.013544,
+    "model_build_time_seconds": 0.0,
+    "search_time_seconds": 0.041237,
+    "ga_time_seconds": null,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": null,
+    "generations_evaluated": null,
+    "backtracking_count": 0,
+    "search_branches": 15,
+    "search_nodes": 16,
+    "cp_sat_conflicts": null,
+    "solver_status": "SOLVED",
+    "solution_valid": true,
+    "ga_solution_valid": null,
+    "fallback_used": false,
+    "best_ga_fitness": null,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": null,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 39,
+    "white_cells_total": 39,
+    "run_count": 17,
+    "domain_reduction_percent": 17.37891737891738,
+    "solution_validity_rate_percent": 100.0
+  },
+  "ga_diagnostics": null,
+  "solver_diagnostics": {
+    "status": "SOLVED",
+    "branches": 15,
+    "backtracking_count": 0,
+    "conflicts": null,
+    "nodes_visited": 16,
+    "execution_time_seconds": 0.05478079989552498,
+    "preprocessing_time_seconds": 0.013544099871069193,
+    "model_build_time_seconds": 0.0,
+    "search_time_seconds": 0.041236700024455786,
+    "domain_reduction_percent": 17.37891737891738,
+    "cp_sat_status": null,
+    "cp_sat_wall_time_seconds": null,
+    "deterministic_time": null,
+    "ortools_version": null
+  },
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 38
+      },
+      {
+        "down": 33
+      },
+      {
+        "down": 28
+      },
+      {
+        "down": 20
+      },
+      {
+        "down": 18
+      },
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 30
+      },
+      7,
+      8,
+      4,
+      9,
+      2,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 28
+      },
+      9,
+      4,
+      6,
+      1,
+      8,
+      {
+        "down": 25
+      },
+      {
+        "down": 27
+      }
+    ],
+    [
+      {
+        "across": 28
+      },
+      1,
+      3,
+      5,
+      6,
+      7,
+      2,
+      4
+    ],
+    [
+      {
+        "across": 35
+      },
+      6,
+      9,
+      2,
+      4,
+      1,
+      5,
+      8
+    ],
+    [
+      {
+        "across": 15
+      },
+      2,
+      6,
+      7,
+      "#",
+      {
+        "across": 17
+      },
+      8,
+      9
+    ],
+    [
+      {
+        "across": 11
+      },
+      8,
+      2,
+      1,
+      "#",
+      {
+        "across": 10
+      },
+      9,
+      1
+    ],
+    [
+      {
+        "across": 9
+      },
+      5,
+      1,
+      3,
+      "#",
+      {
+        "across": 6
+      },
+      1,
+      5
+    ]
+  ],
+  "ga_best_grid": null,
+  "best_candidate_grid": [
+    [
+      "#",
+      {
+        "down": 38
+      },
+      {
+        "down": 33
+      },
+      {
+        "down": 28
+      },
+      {
+        "down": 20
+      },
+      {
+        "down": 18
+      },
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 30
+      },
+      7,
+      8,
+      4,
+      9,
+      2,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 28
+      },
+      9,
+      4,
+      6,
+      1,
+      8,
+      {
+        "down": 25
+      },
+      {
+        "down": 27
+      }
+    ],
+    [
+      {
+        "across": 28
+      },
+      1,
+      3,
+      5,
+      6,
+      7,
+      2,
+      4
+    ],
+    [
+      {
+        "across": 35
+      },
+      6,
+      9,
+      2,
+      4,
+      1,
+      5,
+      8
+    ],
+    [
+      {
+        "across": 15
+      },
+      2,
+      6,
+      7,
+      "#",
+      {
+        "across": 17
+      },
+      8,
+      9
+    ],
+    [
+      {
+        "across": 11
+      },
+      8,
+      2,
+      1,
+      "#",
+      {
+        "across": 10
+      },
+      9,
+      1
+    ],
+    [
+      {
+        "across": 9
+      },
+      5,
+      1,
+      3,
+      "#",
+      {
+        "across": 6
+      },
+      1,
+      5
+    ]
+  ]
+}

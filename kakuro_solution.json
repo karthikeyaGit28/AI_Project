@@ -1,0 +1,95 @@
+{
+  "algorithm": "genetic algorithm",
+  "input_file": "kakuro_puzzle.json",
+  "output_file": "kakuro_solution.json",
+  "board": [
+    [
+      "####",
+      "-\\6",
+      "-\\6",
+      "-\\6"
+    ],
+    [
+      "6\\-",
+      "1",
+      "2",
+      "3"
+    ],
+    [
+      "6\\-",
+      "3",
+      "1",
+      "2"
+    ],
+    [
+      "6\\-",
+      "2",
+      "3",
+      "1"
+    ]
+  ],
+  "solution": [
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      3,
+      1,
+      2
+    ],
+    [
+      2,
+      3,
+      1
+    ]
+  ],
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 6
+      },
+      {
+        "down": 6
+      },
+      {
+        "down": 6
+      }
+    ],
+    [
+      {
+        "across": 6
+      },
+      1,
+      2,
+      3
+    ],
+    [
+      {
+        "across": 6
+      },
+      3,
+      1,
+      2
+    ],
+    [
+      {
+        "across": 6
+      },
+      2,
+      3,
+      1
+    ]
+  ],
+  "metrics": {
+    "execution_time_seconds": 0.002653,
+    "backtracking_count": 0,
+    "genetic_fitness_evaluations": 160,
+    "solution_valid": true,
+    "white_cells_solved": 9,
+    "white_cells_total": 9,
+    "solution_validity_rate_percent": 100.0
+  }
+}

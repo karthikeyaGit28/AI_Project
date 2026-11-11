@@ -1,0 +1,7 @@
+﻿The following libraries / tools are contained.
+Use --license=[toolName] or --license=[licenseName]  to display the license text. 
+Note that the license that applies to the binary depends on the tools used. Please refer to the license text to deterimin which license applies.
+      Library / Tool        License   Information
+         RoundingSAT            MIT   The source code of RoundingSAT
+               Boost          Boost   Boost
+              Soplex     Apache 2.0   Soplex

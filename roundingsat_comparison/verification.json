@@ -1,0 +1,13 @@
+{
+  "verified_at_utc": "2026-11-11T11:06:55.425938+00:00",
+  "completed_trials": 24,
+  "independently_valid_solutions": 24,
+  "paired_puzzle_hashes_verified": 12,
+  "native_models_checked_against_opb": 12,
+  "native_opb_constraints_evaluated": 5373,
+  "hybrid_outcomes_matching_previous_seed_42_run": 12,
+  "source_hashes_verified": 11,
+  "binary_sha256_verified": "12a98e4ca9e91cd0fe344e88760fe0eaced3c1e4cf377b5134379ef4fec9fedf",
+  "raw_result_files_match_study": true,
+  "native_counters_match_stdout": true
+}

@@ -1,0 +1,492 @@
+{
+  "algorithm": "domain_filtering",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 0.266988,
+    "preprocessing_time_seconds": 0.005725,
+    "ga_time_seconds": 0.261261,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": 38720,
+    "generations_evaluated": 242,
+    "backtracking_count": 0,
+    "solution_valid": true,
+    "ga_solution_valid": true,
+    "fallback_used": false,
+    "best_ga_fitness": 0,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": 100.0,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 21,
+    "white_cells_total": 21,
+    "run_count": 10,
+    "domain_reduction_percent": 6.349206349206349,
+    "solution_validity_rate_percent": 100.0,
+    "search_time_seconds": null,
+    "search_branches": null,
+    "search_nodes": null,
+    "cp_sat_conflicts": null,
+    "solver_status": "SOLVED"
+  },
+  "ga_diagnostics": {
+    "evaluations": 38720,
+    "generations_evaluated": 242,
+    "best_fitness": 0,
+    "fitness_history": [
+      61,
+      49,
+      49,
+      29,
+      29,
+      29,
+      29,
+      29,
+      29,
+      29,
+      29,
+      22,
+      22,
+      12,
+      12,
+      12,
+      12,
+      12,
+      10,
+      10,
+      8,
+      8,
+      6,
+      6,
+      6,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      0
+    ],
+    "mutation_rate_min": 0.25,
+    "mutation_rate_max": 0.25
+  },
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 23
+      },
+      {
+        "down": 27
+      },
+      {
+        "down": 22
+      },
+      {
+        "down": 12
+      },
+      {
+        "down": 10
+      }
+    ],
+    [
+      {
+        "across": 23
+      },
+      7,
+      8,
+      4,
+      3,
+      1
+    ],
+    [
+      {
+        "across": 27
+      },
+      8,
+      7,
+      6,
+      1,
+      5
+    ],
+    [
+      {
+        "across": 22
+      },
+      1,
+      6,
+      3,
+      8,
+      4
+    ],
+    [
+      {
+        "across": 12
+      },
+      4,
+      1,
+      7,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 10
+      },
+      3,
+      5,
+      2,
+      "#",
+      "#"
+    ]
+  ],
+  "ga_best_grid": [
+    [
+      "#",
+      {
+        "down": 23
+      },
+      {
+        "down": 27
+      },
+      {
+        "down": 22
+      },
+      {
+        "down": 12
+      },
+      {
+        "down": 10
+      }
+    ],
+    [
+      {
+        "across": 23
+      },
+      7,
+      8,
+      4,
+      3,
+      1
+    ],
+    [
+      {
+        "across": 27
+      },
+      8,
+      7,
+      6,
+      1,
+      5
+    ],
+    [
+      {
+        "across": 22
+      },
+      1,
+      6,
+      3,
+      8,
+      4
+    ],
+    [
+      {
+        "across": 12
+      },
+      4,
+      1,
+      7,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 10
+      },
+      3,
+      5,
+      2,
+      "#",
+      "#"
+    ]
+  ],
+  "best_candidate_grid": [
+    [
+      "#",
+      {
+        "down": 23
+      },
+      {
+        "down": 27
+      },
+      {
+        "down": 22
+      },
+      {
+        "down": 12
+      },
+      {
+        "down": 10
+      }
+    ],
+    [
+      {
+        "across": 23
+      },
+      7,
+      8,
+      4,
+      3,
+      1
+    ],
+    [
+      {
+        "across": 27
+      },
+      8,
+      7,
+      6,
+      1,
+      5
+    ],
+    [
+      {
+        "across": 22
+      },
+      1,
+      6,
+      3,
+      8,
+      4
+    ],
+    [
+      {
+        "across": 12
+      },
+      4,
+      1,
+      7,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 10
+      },
+      3,
+      5,
+      2,
+      "#",
+      "#"
+    ]
+  ]
+}

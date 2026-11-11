@@ -1,0 +1,129 @@
+{
+  "algorithm": "genetic algorithm",
+  "input_file": "D:\\Uni_Study\\Sem-5\\AI\\Project\\benchmark_results\\5x5\\seed_42\\puzzle.json",
+  "output_file": "D:\\Uni_Study\\Sem-5\\AI\\Project\\benchmark_results\\5x5\\seed_42\\solution.json",
+  "board": [
+    [
+      "####",
+      "####",
+      "####",
+      "-\\19",
+      "-\\14"
+    ],
+    [
+      "####",
+      "####",
+      "10\\-",
+      "9",
+      "1"
+    ],
+    [
+      "####",
+      "-\\10",
+      "8\\8",
+      "2",
+      "6"
+    ],
+    [
+      "19\\-",
+      "2",
+      "6",
+      "7",
+      "4"
+    ],
+    [
+      "14\\-",
+      "8",
+      "2",
+      "1",
+      "3"
+    ]
+  ],
+  "solution": [
+    [
+      null,
+      null,
+      9,
+      1
+    ],
+    [
+      null,
+      null,
+      2,
+      6
+    ],
+    [
+      2,
+      6,
+      7,
+      4
+    ],
+    [
+      8,
+      2,
+      1,
+      3
+    ]
+  ],
+  "solved_grid": [
+    [
+      "#",
+      "#",
+      "#",
+      {
+        "down": 19
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 10
+      },
+      9,
+      1
+    ],
+    [
+      "#",
+      {
+        "down": 10
+      },
+      {
+        "across": 8,
+        "down": 8
+      },
+      2,
+      6
+    ],
+    [
+      {
+        "across": 19
+      },
+      2,
+      6,
+      7,
+      4
+    ],
+    [
+      {
+        "across": 14
+      },
+      8,
+      2,
+      1,
+      3
+    ]
+  ],
+  "metrics": {
+    "execution_time_seconds": 0.017825,
+    "backtracking_count": 0,
+    "genetic_fitness_evaluations": 480,
+    "solution_valid": true,
+    "white_cells_solved": 12,
+    "white_cells_total": 12,
+    "solution_validity_rate_percent": 100.0
+  }
+}

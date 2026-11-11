@@ -1,0 +1,190 @@
+{
+  "algorithm": "cp_sat",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 0.027278,
+    "preprocessing_time_seconds": 0.00081,
+    "model_build_time_seconds": 0.00081,
+    "search_time_seconds": 0.026468,
+    "ga_time_seconds": null,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": null,
+    "generations_evaluated": null,
+    "backtracking_count": null,
+    "search_branches": 1727,
+    "search_nodes": null,
+    "cp_sat_conflicts": 6,
+    "solver_status": "OPTIMAL",
+    "solution_valid": true,
+    "ga_solution_valid": null,
+    "fallback_used": false,
+    "best_ga_fitness": null,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": null,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 21,
+    "white_cells_total": 21,
+    "run_count": 10,
+    "domain_reduction_percent": null,
+    "solution_validity_rate_percent": 100.0
+  },
+  "ga_diagnostics": null,
+  "solver_diagnostics": {
+    "status": "OPTIMAL",
+    "branches": 1727,
+    "backtracking_count": null,
+    "conflicts": 6,
+    "nodes_visited": null,
+    "execution_time_seconds": 0.027277900371700525,
+    "preprocessing_time_seconds": 0.0008097002282738686,
+    "model_build_time_seconds": 0.0008097002282738686,
+    "search_time_seconds": 0.026468200143426657,
+    "domain_reduction_percent": null,
+    "cp_sat_status": "OPTIMAL",
+    "cp_sat_wall_time_seconds": 0.025393000000000002,
+    "deterministic_time": 0.0052818592775510835,
+    "ortools_version": "9.15.6755"
+  },
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 23
+      },
+      {
+        "down": 27
+      },
+      {
+        "down": 22
+      },
+      {
+        "down": 12
+      },
+      {
+        "down": 10
+      }
+    ],
+    [
+      {
+        "across": 23
+      },
+      9,
+      2,
+      4,
+      1,
+      7
+    ],
+    [
+      {
+        "across": 27
+      },
+      4,
+      6,
+      9,
+      7,
+      1
+    ],
+    [
+      {
+        "across": 22
+      },
+      7,
+      3,
+      6,
+      4,
+      2
+    ],
+    [
+      {
+        "across": 12
+      },
+      1,
+      9,
+      2,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 10
+      },
+      2,
+      7,
+      1,
+      "#",
+      "#"
+    ]
+  ],
+  "ga_best_grid": null,
+  "best_candidate_grid": [
+    [
+      "#",
+      {
+        "down": 23
+      },
+      {
+        "down": 27
+      },
+      {
+        "down": 22
+      },
+      {
+        "down": 12
+      },
+      {
+        "down": 10
+      }
+    ],
+    [
+      {
+        "across": 23
+      },
+      9,
+      2,
+      4,
+      1,
+      7
+    ],
+    [
+      {
+        "across": 27
+      },
+      4,
+      6,
+      9,
+      7,
+      1
+    ],
+    [
+      {
+        "across": 22
+      },
+      7,
+      3,
+      6,
+      4,
+      2
+    ],
+    [
+      {
+        "across": 12
+      },
+      1,
+      9,
+      2,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 10
+      },
+      2,
+      7,
+      1,
+      "#",
+      "#"
+    ]
+  ]
+}

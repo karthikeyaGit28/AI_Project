@@ -1,0 +1,684 @@
+{
+  "algorithm": "cp_sat",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 0.146915,
+    "preprocessing_time_seconds": 0.00206,
+    "model_build_time_seconds": 0.00206,
+    "search_time_seconds": 0.144855,
+    "ga_time_seconds": null,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": null,
+    "generations_evaluated": null,
+    "backtracking_count": null,
+    "search_branches": 12930,
+    "search_nodes": null,
+    "cp_sat_conflicts": 401,
+    "solver_status": "OPTIMAL",
+    "solution_valid": true,
+    "ga_solution_valid": null,
+    "fallback_used": false,
+    "best_ga_fitness": null,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": null,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 137,
+    "white_cells_total": 137,
+    "run_count": 48,
+    "domain_reduction_percent": null,
+    "solution_validity_rate_percent": 100.0
+  },
+  "ga_diagnostics": null,
+  "solver_diagnostics": {
+    "status": "OPTIMAL",
+    "branches": 12930,
+    "backtracking_count": null,
+    "conflicts": 401,
+    "nodes_visited": null,
+    "execution_time_seconds": 0.14691519970074296,
+    "preprocessing_time_seconds": 0.002060200087726116,
+    "model_build_time_seconds": 0.002060200087726116,
+    "search_time_seconds": 0.14485499961301684,
+    "domain_reduction_percent": null,
+    "cp_sat_status": "OPTIMAL",
+    "cp_sat_wall_time_seconds": 0.1436249,
+    "deterministic_time": 0.04408022149115909,
+    "ortools_version": "9.15.6755"
+  },
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 15
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 36
+      },
+      {
+        "down": 44
+      },
+      {
+        "down": 21
+      },
+      {
+        "down": 19
+      },
+      "#",
+      "#",
+      {
+        "down": 27
+      },
+      {
+        "down": 25
+      },
+      {
+        "down": 30
+      },
+      {
+        "down": 11
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      {
+        "across": 32
+      },
+      9,
+      6,
+      3,
+      5,
+      2,
+      7,
+      "#",
+      {
+        "across": 35
+      },
+      5,
+      9,
+      8,
+      7,
+      6
+    ],
+    [
+      {
+        "across": 36
+      },
+      6,
+      7,
+      5,
+      8,
+      9,
+      1,
+      {
+        "down": 41
+      },
+      {
+        "across": 28,
+        "down": 42
+      },
+      7,
+      6,
+      3,
+      4,
+      8
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 45
+      },
+      1,
+      6,
+      3,
+      9,
+      8,
+      7,
+      2,
+      4,
+      5,
+      "#",
+      "#"
+    ],
+    [
+      "#",
+      {
+        "down": 45
+      },
+      {
+        "across": 45,
+        "down": 45
+      },
+      6,
+      9,
+      7,
+      2,
+      5,
+      8,
+      4,
+      3,
+      1,
+      {
+        "down": 45
+      },
+      {
+        "down": 45
+      }
+    ],
+    [
+      {
+        "across": 17
+      },
+      1,
+      6,
+      7,
+      3,
+      "#",
+      {
+        "across": 32
+      },
+      7,
+      9,
+      3,
+      2,
+      4,
+      6,
+      1
+    ],
+    [
+      {
+        "across": 10
+      },
+      3,
+      1,
+      2,
+      4,
+      {
+        "down": 30
+      },
+      {
+        "across": 30,
+        "down": 32
+      },
+      3,
+      2,
+      6,
+      1,
+      9,
+      4,
+      5
+    ],
+    [
+      {
+        "across": 40
+      },
+      9,
+      3,
+      4,
+      2,
+      7,
+      8,
+      1,
+      6,
+      "#",
+      "#",
+      {
+        "across": 7
+      },
+      1,
+      6
+    ],
+    [
+      {
+        "across": 39
+      },
+      2,
+      5,
+      8,
+      7,
+      3,
+      1,
+      9,
+      4,
+      {
+        "down": 24
+      },
+      {
+        "down": 26
+      },
+      {
+        "across": 5,
+        "down": 28
+      },
+      3,
+      2
+    ],
+    [
+      {
+        "across": 11
+      },
+      7,
+      4,
+      "#",
+      {
+        "across": 45
+      },
+      4,
+      7,
+      2,
+      1,
+      6,
+      8,
+      9,
+      5,
+      3
+    ],
+    [
+      {
+        "across": 13
+      },
+      5,
+      8,
+      {
+        "down": 21
+      },
+      {
+        "across": 45,
+        "down": 18
+      },
+      1,
+      2,
+      6,
+      5,
+      3,
+      4,
+      7,
+      8,
+      9
+    ],
+    [
+      {
+        "across": 36
+      },
+      4,
+      7,
+      5,
+      9,
+      8,
+      3,
+      "#",
+      {
+        "across": 28
+      },
+      5,
+      6,
+      1,
+      9,
+      7
+    ],
+    [
+      {
+        "across": 37
+      },
+      6,
+      9,
+      7,
+      8,
+      2,
+      5,
+      "#",
+      {
+        "across": 26
+      },
+      8,
+      7,
+      5,
+      2,
+      4
+    ],
+    [
+      {
+        "across": 31
+      },
+      8,
+      2,
+      9,
+      1,
+      5,
+      6,
+      "#",
+      {
+        "across": 24
+      },
+      2,
+      1,
+      6,
+      7,
+      8
+    ]
+  ],
+  "ga_best_grid": null,
+  "best_candidate_grid": [
+    [
+      "#",
+      {
+        "down": 15
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 36
+      },
+      {
+        "down": 44
+      },
+      {
+        "down": 21
+      },
+      {
+        "down": 19
+      },
+      "#",
+      "#",
+      {
+        "down": 27
+      },
+      {
+        "down": 25
+      },
+      {
+        "down": 30
+      },
+      {
+        "down": 11
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      {
+        "across": 32
+      },
+      9,
+      6,
+      3,
+      5,
+      2,
+      7,
+      "#",
+      {
+        "across": 35
+      },
+      5,
+      9,
+      8,
+      7,
+      6
+    ],
+    [
+      {
+        "across": 36
+      },
+      6,
+      7,
+      5,
+      8,
+      9,
+      1,
+      {
+        "down": 41
+      },
+      {
+        "across": 28,
+        "down": 42
+      },
+      7,
+      6,
+      3,
+      4,
+      8
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 45
+      },
+      1,
+      6,
+      3,
+      9,
+      8,
+      7,
+      2,
+      4,
+      5,
+      "#",
+      "#"
+    ],
+    [
+      "#",
+      {
+        "down": 45
+      },
+      {
+        "across": 45,
+        "down": 45
+      },
+      6,
+      9,
+      7,
+      2,
+      5,
+      8,
+      4,
+      3,
+      1,
+      {
+        "down": 45
+      },
+      {
+        "down": 45
+      }
+    ],
+    [
+      {
+        "across": 17
+      },
+      1,
+      6,
+      7,
+      3,
+      "#",
+      {
+        "across": 32
+      },
+      7,
+      9,
+      3,
+      2,
+      4,
+      6,
+      1
+    ],
+    [
+      {
+        "across": 10
+      },
+      3,
+      1,
+      2,
+      4,
+      {
+        "down": 30
+      },
+      {
+        "across": 30,
+        "down": 32
+      },
+      3,
+      2,
+      6,
+      1,
+      9,
+      4,
+      5
+    ],
+    [
+      {
+        "across": 40
+      },
+      9,
+      3,
+      4,
+      2,
+      7,
+      8,
+      1,
+      6,
+      "#",
+      "#",
+      {
+        "across": 7
+      },
+      1,
+      6
+    ],
+    [
+      {
+        "across": 39
+      },
+      2,
+      5,
+      8,
+      7,
+      3,
+      1,
+      9,
+      4,
+      {
+        "down": 24
+      },
+      {
+        "down": 26
+      },
+      {
+        "across": 5,
+        "down": 28
+      },
+      3,
+      2
+    ],
+    [
+      {
+        "across": 11
+      },
+      7,
+      4,
+      "#",
+      {
+        "across": 45
+      },
+      4,
+      7,
+      2,
+      1,
+      6,
+      8,
+      9,
+      5,
+      3
+    ],
+    [
+      {
+        "across": 13
+      },
+      5,
+      8,
+      {
+        "down": 21
+      },
+      {
+        "across": 45,
+        "down": 18
+      },
+      1,
+      2,
+      6,
+      5,
+      3,
+      4,
+      7,
+      8,
+      9
+    ],
+    [
+      {
+        "across": 36
+      },
+      4,
+      7,
+      5,
+      9,
+      8,
+      3,
+      "#",
+      {
+        "across": 28
+      },
+      5,
+      6,
+      1,
+      9,
+      7
+    ],
+    [
+      {
+        "across": 37
+      },
+      6,
+      9,
+      7,
+      8,
+      2,
+      5,
+      "#",
+      {
+        "across": 26
+      },
+      8,
+      7,
+      5,
+      2,
+      4
+    ],
+    [
+      {
+        "across": 31
+      },
+      8,
+      2,
+      9,
+      1,
+      5,
+      6,
+      "#",
+      {
+        "across": 24
+      },
+      2,
+      1,
+      6,
+      7,
+      8
+    ]
+  ]
+}

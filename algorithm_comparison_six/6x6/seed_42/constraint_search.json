@@ -1,0 +1,190 @@
+{
+  "algorithm": "constraint_search",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 0.018455,
+    "preprocessing_time_seconds": 0.004831,
+    "model_build_time_seconds": 0.0,
+    "search_time_seconds": 0.013624,
+    "ga_time_seconds": null,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": null,
+    "generations_evaluated": null,
+    "backtracking_count": 0,
+    "search_branches": 8,
+    "search_nodes": 9,
+    "cp_sat_conflicts": null,
+    "solver_status": "SOLVED",
+    "solution_valid": true,
+    "ga_solution_valid": null,
+    "fallback_used": false,
+    "best_ga_fitness": null,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": null,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 21,
+    "white_cells_total": 21,
+    "run_count": 10,
+    "domain_reduction_percent": 6.349206349206349,
+    "solution_validity_rate_percent": 100.0
+  },
+  "ga_diagnostics": null,
+  "solver_diagnostics": {
+    "status": "SOLVED",
+    "branches": 8,
+    "backtracking_count": 0,
+    "conflicts": null,
+    "nodes_visited": 9,
+    "execution_time_seconds": 0.018454699777066708,
+    "preprocessing_time_seconds": 0.004830599762499332,
+    "model_build_time_seconds": 0.0,
+    "search_time_seconds": 0.013624100014567375,
+    "domain_reduction_percent": 6.349206349206349,
+    "cp_sat_status": null,
+    "cp_sat_wall_time_seconds": null,
+    "deterministic_time": null,
+    "ortools_version": null
+  },
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 23
+      },
+      {
+        "down": 27
+      },
+      {
+        "down": 22
+      },
+      {
+        "down": 12
+      },
+      {
+        "down": 10
+      }
+    ],
+    [
+      {
+        "across": 23
+      },
+      8,
+      3,
+      5,
+      6,
+      1
+    ],
+    [
+      {
+        "across": 27
+      },
+      9,
+      8,
+      3,
+      5,
+      2
+    ],
+    [
+      {
+        "across": 22
+      },
+      3,
+      5,
+      6,
+      1,
+      7
+    ],
+    [
+      {
+        "across": 12
+      },
+      2,
+      9,
+      1,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 10
+      },
+      1,
+      2,
+      7,
+      "#",
+      "#"
+    ]
+  ],
+  "ga_best_grid": null,
+  "best_candidate_grid": [
+    [
+      "#",
+      {
+        "down": 23
+      },
+      {
+        "down": 27
+      },
+      {
+        "down": 22
+      },
+      {
+        "down": 12
+      },
+      {
+        "down": 10
+      }
+    ],
+    [
+      {
+        "across": 23
+      },
+      8,
+      3,
+      5,
+      6,
+      1
+    ],
+    [
+      {
+        "across": 27
+      },
+      9,
+      8,
+      3,
+      5,
+      2
+    ],
+    [
+      {
+        "across": 22
+      },
+      3,
+      5,
+      6,
+      1,
+      7
+    ],
+    [
+      {
+        "across": 12
+      },
+      2,
+      9,
+      1,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 10
+      },
+      1,
+      2,
+      7,
+      "#",
+      "#"
+    ]
+  ]
+}

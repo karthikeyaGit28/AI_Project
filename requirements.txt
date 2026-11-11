@@ -1,0 +1,2 @@
+# CP-SAT dependency; the GA and standalone constraint search use the stdlib.
+ortools==9.15.6755

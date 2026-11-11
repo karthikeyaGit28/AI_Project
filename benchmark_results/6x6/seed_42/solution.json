@@ -1,0 +1,171 @@
+{
+  "algorithm": "genetic algorithm",
+  "input_file": "D:\\Uni_Study\\Sem-5\\AI\\Project\\benchmark_results\\6x6\\seed_42\\puzzle.json",
+  "output_file": "D:\\Uni_Study\\Sem-5\\AI\\Project\\benchmark_results\\6x6\\seed_42\\solution.json",
+  "board": [
+    [
+      "####",
+      "-\\23",
+      "-\\27",
+      "-\\22",
+      "-\\12",
+      "-\\10"
+    ],
+    [
+      "23\\-",
+      "1",
+      "6",
+      "5",
+      "4",
+      "7"
+    ],
+    [
+      "27\\-",
+      "7",
+      "9",
+      "3",
+      "6",
+      "2"
+    ],
+    [
+      "22\\-",
+      "6",
+      "4",
+      "9",
+      "2",
+      "1"
+    ],
+    [
+      "12\\-",
+      "5",
+      "3",
+      "4",
+      "####",
+      "####"
+    ],
+    [
+      "10\\-",
+      "4",
+      "5",
+      "1",
+      "####",
+      "####"
+    ]
+  ],
+  "solution": [
+    [
+      1,
+      6,
+      5,
+      4,
+      7
+    ],
+    [
+      7,
+      9,
+      3,
+      6,
+      2
+    ],
+    [
+      6,
+      4,
+      9,
+      2,
+      1
+    ],
+    [
+      5,
+      3,
+      4,
+      null,
+      null
+    ],
+    [
+      4,
+      5,
+      1,
+      null,
+      null
+    ]
+  ],
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 23
+      },
+      {
+        "down": 27
+      },
+      {
+        "down": 22
+      },
+      {
+        "down": 12
+      },
+      {
+        "down": 10
+      }
+    ],
+    [
+      {
+        "across": 23
+      },
+      1,
+      6,
+      5,
+      4,
+      7
+    ],
+    [
+      {
+        "across": 27
+      },
+      7,
+      9,
+      3,
+      6,
+      2
+    ],
+    [
+      {
+        "across": 22
+      },
+      6,
+      4,
+      9,
+      2,
+      1
+    ],
+    [
+      {
+        "across": 12
+      },
+      5,
+      3,
+      4,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 10
+      },
+      4,
+      5,
+      1,
+      "#",
+      "#"
+    ]
+  ],
+  "metrics": {
+    "execution_time_seconds": 0.304945,
+    "backtracking_count": 0,
+    "genetic_fitness_evaluations": 11360,
+    "solution_valid": true,
+    "white_cells_solved": 21,
+    "white_cells_total": 21,
+    "solution_validity_rate_percent": 100.0
+  }
+}

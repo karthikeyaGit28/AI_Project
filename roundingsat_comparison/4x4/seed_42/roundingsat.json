@@ -1,0 +1,149 @@
+{
+  "algorithm": "roundingsat",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 0.06796,
+    "preprocessing_time_seconds": 0.001552,
+    "model_build_time_seconds": 0.001552,
+    "search_time_seconds": 0.066408,
+    "ga_time_seconds": null,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": null,
+    "generations_evaluated": null,
+    "backtracking_count": null,
+    "search_branches": null,
+    "search_nodes": null,
+    "cp_sat_conflicts": null,
+    "roundingsat_decisions": 34,
+    "roundingsat_conflicts": 1,
+    "roundingsat_propagations": 54,
+    "native_solver_time_seconds": 0.0,
+    "opb_variables": 81,
+    "opb_constraints": 69,
+    "solver_status": "SOLVED",
+    "solution_valid": true,
+    "ga_solution_valid": null,
+    "fallback_used": false,
+    "best_ga_fitness": null,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": null,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 9,
+    "white_cells_total": 9,
+    "run_count": 6,
+    "domain_reduction_percent": null,
+    "solution_validity_rate_percent": 100.0
+  },
+  "ga_diagnostics": null,
+  "solver_diagnostics": {
+    "status": "SOLVED",
+    "native_status": "SATISFIABLE",
+    "branches": null,
+    "backtracking_count": null,
+    "conflicts": null,
+    "nodes_visited": null,
+    "execution_time_seconds": 0.06795950001105666,
+    "preprocessing_time_seconds": 0.0015516998246312141,
+    "model_build_time_seconds": 0.0015516998246312141,
+    "search_time_seconds": 0.06640780018642545,
+    "domain_reduction_percent": null,
+    "binary_sha256": "12a98e4ca9e91cd0fe344e88760fe0eaced3c1e4cf377b5134379ef4fec9fedf",
+    "binary_path": "D:\\Uni_Study\\Sem-5\\AI\\Project\\tools\\roundingsat\\roundingsat.exe",
+    "seed_requested": 42,
+    "seed_applied": false,
+    "lp_ratio": 1,
+    "native_returncode": 0,
+    "timed_out": false,
+    "native_time_label": "cpu time (upstream label; coarse clock() on Windows)",
+    "timeout_reason": null,
+    "opb_variables": 81,
+    "opb_constraints": 69,
+    "native_decisions": 34,
+    "native_conflicts": 1,
+    "native_propagations": 54,
+    "native_restarts": 1,
+    "native_time_seconds": 0.0,
+    "solver_version": "RoundingSat 2",
+    "solver_commit": "d4edbf7",
+    "native_lp_calls": 2,
+    "lp_used": true
+  },
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 18
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 17
+      }
+    ],
+    [
+      {
+        "across": 18
+      },
+      8,
+      9,
+      1
+    ],
+    [
+      {
+        "across": 13
+      },
+      1,
+      3,
+      9
+    ],
+    [
+      {
+        "across": 17
+      },
+      9,
+      1,
+      7
+    ]
+  ],
+  "ga_best_grid": null,
+  "best_candidate_grid": [
+    [
+      "#",
+      {
+        "down": 18
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 17
+      }
+    ],
+    [
+      {
+        "across": 18
+      },
+      8,
+      9,
+      1
+    ],
+    [
+      {
+        "across": 13
+      },
+      1,
+      3,
+      9
+    ],
+    [
+      {
+        "across": 17
+      },
+      9,
+      1,
+      7
+    ]
+  ]
+}

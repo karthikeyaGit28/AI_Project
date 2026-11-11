@@ -1,0 +1,154 @@
+{
+  "algorithm": "cp_sat",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 0.015108,
+    "preprocessing_time_seconds": 0.000734,
+    "model_build_time_seconds": 0.000734,
+    "search_time_seconds": 0.014374,
+    "ga_time_seconds": null,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": null,
+    "generations_evaluated": null,
+    "backtracking_count": null,
+    "search_branches": 621,
+    "search_nodes": null,
+    "cp_sat_conflicts": 4,
+    "solver_status": "OPTIMAL",
+    "solution_valid": true,
+    "ga_solution_valid": null,
+    "fallback_used": false,
+    "best_ga_fitness": null,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": null,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 12,
+    "white_cells_total": 12,
+    "run_count": 8,
+    "domain_reduction_percent": null,
+    "solution_validity_rate_percent": 100.0
+  },
+  "ga_diagnostics": null,
+  "solver_diagnostics": {
+    "status": "OPTIMAL",
+    "branches": 621,
+    "backtracking_count": null,
+    "conflicts": 4,
+    "nodes_visited": null,
+    "execution_time_seconds": 0.015107600018382072,
+    "preprocessing_time_seconds": 0.0007336996495723724,
+    "model_build_time_seconds": 0.0007336996495723724,
+    "search_time_seconds": 0.0143739003688097,
+    "domain_reduction_percent": null,
+    "cp_sat_status": "OPTIMAL",
+    "cp_sat_wall_time_seconds": 0.0133463,
+    "deterministic_time": 0.0024421096009070893,
+    "ortools_version": "9.15.6755"
+  },
+  "solved_grid": [
+    [
+      "#",
+      "#",
+      "#",
+      {
+        "down": 19
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 10
+      },
+      2,
+      8
+    ],
+    [
+      "#",
+      {
+        "down": 10
+      },
+      {
+        "across": 8,
+        "down": 8
+      },
+      5,
+      3
+    ],
+    [
+      {
+        "across": 19
+      },
+      9,
+      5,
+      4,
+      1
+    ],
+    [
+      {
+        "across": 14
+      },
+      1,
+      3,
+      8,
+      2
+    ]
+  ],
+  "ga_best_grid": null,
+  "best_candidate_grid": [
+    [
+      "#",
+      "#",
+      "#",
+      {
+        "down": 19
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 10
+      },
+      2,
+      8
+    ],
+    [
+      "#",
+      {
+        "down": 10
+      },
+      {
+        "across": 8,
+        "down": 8
+      },
+      5,
+      3
+    ],
+    [
+      {
+        "across": 19
+      },
+      9,
+      5,
+      4,
+      1
+    ],
+    [
+      {
+        "across": 14
+      },
+      1,
+      3,
+      8,
+      2
+    ]
+  ]
+}

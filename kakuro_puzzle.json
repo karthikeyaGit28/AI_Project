@@ -1,0 +1,43 @@
+{
+  "format": "kakuro-grid-v1",
+  "size": 3,
+  "seed": 42,
+  "grid": [
+    [
+      "#",
+      {
+        "down": 6
+      },
+      {
+        "down": 6
+      },
+      {
+        "down": 6
+      }
+    ],
+    [
+      {
+        "across": 6
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "across": 6
+      },
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "across": 6
+      },
+      null,
+      null,
+      null
+    ]
+  ]
+}

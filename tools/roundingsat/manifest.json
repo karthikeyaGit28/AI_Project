@@ -1,0 +1,19 @@
+{
+  "version": "RoundingSat 2",
+  "commit": "d4edbf7908a9bb951fd181940919e0f3ac7ab1ee",
+  "platform": "Windows x64 static",
+  "binary_sha256": "12a98e4ca9e91cd0fe344e88760fe0eaced3c1e4cf377b5134379ef4fec9fedf",
+  "binary_bytes": 2149376,
+  "source_url": "https://gitlab.com/MIAOresearch/software/roundingsat",
+  "source_commit_url": "https://gitlab.com/MIAOresearch/software/roundingsat/-/tree/d4edbf7908a9bb951fd181940919e0f3ac7ab1ee",
+  "download_url": "https://gitlab.com/api/v4/projects/MIAOresearch%2Fsoftware%2Froundingsat/jobs/artifacts/master/raw/build/roundingsat.exe?job=build-windows",
+  "lp_enabled": true,
+  "seed_applied": false,
+  "native_options": [
+    "--print-sol=1",
+    "--verbosity=1",
+    "--lp=1",
+    "--time-limit=<remaining seconds>"
+  ],
+  "license": "MIT (RoundingSat); Boost Software License; Apache-2.0 (SoPlex)"
+}

@@ -1,0 +1,18 @@
+{
+  "argv": [
+    "D:\\Uni_Study\\Sem-5\\AI\\Project\\tools\\roundingsat\\roundingsat.exe",
+    "D:\\Uni_Study\\Sem-5\\AI\\Project\\roundingsat_comparison\\16x16\\seed_42\\roundingsat_artifacts\\kakuro.opb",
+    "--print-sol=1",
+    "--verbosity=1",
+    "--lp=1",
+    "--time-limit=119.993739300"
+  ],
+  "returncode": 0,
+  "timed_out": false,
+  "timeout_reason": null,
+  "binary_sha256": "12a98e4ca9e91cd0fe344e88760fe0eaced3c1e4cf377b5134379ef4fec9fedf",
+  "error": null,
+  "seed_requested": 42,
+  "seed_applied": false,
+  "lp_ratio": 1
+}

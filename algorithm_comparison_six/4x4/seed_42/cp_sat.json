@@ -1,0 +1,126 @@
+{
+  "algorithm": "cp_sat",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 0.026433,
+    "preprocessing_time_seconds": 0.001759,
+    "model_build_time_seconds": 0.001759,
+    "search_time_seconds": 0.024674,
+    "ga_time_seconds": null,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": null,
+    "generations_evaluated": null,
+    "backtracking_count": null,
+    "search_branches": 797,
+    "search_nodes": null,
+    "cp_sat_conflicts": 0,
+    "solver_status": "OPTIMAL",
+    "solution_valid": true,
+    "ga_solution_valid": null,
+    "fallback_used": false,
+    "best_ga_fitness": null,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": null,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 9,
+    "white_cells_total": 9,
+    "run_count": 6,
+    "domain_reduction_percent": null,
+    "solution_validity_rate_percent": 100.0
+  },
+  "ga_diagnostics": null,
+  "solver_diagnostics": {
+    "status": "OPTIMAL",
+    "branches": 797,
+    "backtracking_count": null,
+    "conflicts": 0,
+    "nodes_visited": null,
+    "execution_time_seconds": 0.02643289975821972,
+    "preprocessing_time_seconds": 0.0017589000053703785,
+    "model_build_time_seconds": 0.0017589000053703785,
+    "search_time_seconds": 0.02467399975284934,
+    "domain_reduction_percent": null,
+    "cp_sat_status": "OPTIMAL",
+    "cp_sat_wall_time_seconds": 0.0234895,
+    "deterministic_time": 0.005255607876190605,
+    "ortools_version": "9.15.6755"
+  },
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 18
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 17
+      }
+    ],
+    [
+      {
+        "across": 18
+      },
+      1,
+      8,
+      9
+    ],
+    [
+      {
+        "across": 13
+      },
+      9,
+      1,
+      3
+    ],
+    [
+      {
+        "across": 17
+      },
+      8,
+      4,
+      5
+    ]
+  ],
+  "ga_best_grid": null,
+  "best_candidate_grid": [
+    [
+      "#",
+      {
+        "down": 18
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 17
+      }
+    ],
+    [
+      {
+        "across": 18
+      },
+      1,
+      8,
+      9
+    ],
+    [
+      {
+        "across": 13
+      },
+      9,
+      1,
+      3
+    ],
+    [
+      {
+        "across": 17
+      },
+      8,
+      4,
+      5
+    ]
+  ]
+}
