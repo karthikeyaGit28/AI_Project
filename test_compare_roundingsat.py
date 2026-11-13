@@ -11,6 +11,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import compare_algorithms as study
+import kakuro_roundingsat
 
 
 PUZZLE = {"grid": [
@@ -154,8 +155,8 @@ class RoundingSatDriverTests(unittest.TestCase):
                 patch.object(study, "ensure_roundingsat_available", side_effect=AssertionError("optional solver")):
             study.main(["--output-dir", directory])
 
-    @unittest.skipUnless((Path(study.__file__).parent / "tools" / "roundingsat" / "roundingsat.exe").is_file(),
-                         "RoundingSat binary is optional outside the benchmark environment")
+    @unittest.skipUnless(kakuro_roundingsat.DEFAULT_BINARY.is_file(),
+                         "RoundingSat binary for this platform is optional outside the benchmark environment")
     def test_real_native_worker_returns_independently_valid_assignment_and_artifacts(self):
         with tempfile.TemporaryDirectory() as directory:
             input_path = Path(directory) / "puzzle.json"

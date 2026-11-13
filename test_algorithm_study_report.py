@@ -165,6 +165,36 @@ class StudyReportTests(unittest.TestCase):
                     "total_roundingsat_propagations", "mean_native_solver_time_seconds"):
             self.assertIsNone(row[key], key)
 
+    def test_historical_roundingsat_report_does_not_gain_memetic(self):
+        summary = report_module.summarize({"records": [record("roundingsat")]})
+        self.assertEqual([row["algorithm"] for row in summary],
+                         list(report_module.GA_ALGORITHMS + report_module.EXACT_ALGORITHMS))
+
+    def test_memetic_report_pairs_with_hybrid_and_shows_local_search(self):
+        ours = record("ours", time=10.0, ga_solution_valid=False, fallback_used=True,
+                      generations_evaluated=1500)
+        memetic = record("memetic", time=2.5, generations_evaluated=20, memetic_stop_reason="solved_by_local_search",
+                         memetic_restarts=0, local_search_calls=40, local_search_steps=300,
+                         local_search_neighbours=9000, local_search_improving_moves=120,
+                         local_search_sideways_moves=30, local_search_fitness_reduction=400,
+                         local_search_time_seconds=2.0, best_ga_fitness=0)
+        report = {"settings": {"algorithms": ["ours", "memetic"], "sizes": [[4, 4]], "seeds": [42]},
+                  "records": [ours, memetic]}
+        ours_row, memetic_row = report_module.summarize(report)
+        self.assertEqual((memetic_row["ga_solved"], memetic_row["fallback_solved"]), (1, 0))
+        self.assertEqual((ours_row["ga_solved"], ours_row["fallback_solved"]), (0, 1))
+        text = report_module.render_markdown(report)
+        self.assertIn("two-algorithm evaluation", text)
+        self.assertIn("| Memetic algorithm | Same propagated domains", text)
+        self.assertIn("## Memetic algorithm versus our hybrid", text)
+        self.assertIn("| 4x4 | 10.0000 | GA 0, fallback 1 of 1 | 2.5000 | 1/1 | 20.0 | 4.0x |", text)
+        self.assertIn("Grids fully solved by both: 1; memetic mean time lower on 1 of them.", text)
+        self.assertIn("## Memetic local-search diagnostics", text)
+        self.assertIn("| 4x4 | 42 | completed | solved_by_local_search | 2.5000 | 2.0000 | 20 | 0 | 40 | "
+                      "300 | 9,000 | 120 | 30 | 400 | 0 | Yes |", text)
+        self.assertIn("| Grid | Our hybrid algorithm | Memetic algorithm |", text)
+        self.assertIn("The memetic algorithm solved 1 of 1 attempted trials with no exact fallback", text)
+
     def test_unknown_or_duplicate_algorithm_selection_is_rejected(self):
         for selected in (["unknown"], ["cp_sat", "cp_sat"]):
             with self.subTest(selected=selected), self.assertRaises(ValueError):
