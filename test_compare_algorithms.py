@@ -82,6 +82,46 @@ class AlgorithmStudyTests(unittest.TestCase):
                 if algorithm != "ours":
                     self.assertFalse(result["metrics"]["fallback_used"])
 
+    def test_memetic_uses_propagation_local_search_and_no_fallback(self):
+        with patch.object(study.kakuro, "propagate", wraps=kakuro.propagate) as propagate, \
+                patch.object(study.kakuro, "backtracking_search") as fallback:
+            result = study.solve_case(PUZZLE, "memetic", population_size=8, generations=5)
+        propagate.assert_called_once()
+        fallback.assert_not_called()
+        metrics = result["metrics"]
+        self.assertTrue(study.verify_result(PUZZLE, result))
+        self.assertTrue(metrics["solution_valid"])
+        self.assertTrue(metrics["ga_solution_valid"])
+        self.assertFalse(metrics["fallback_used"])
+        self.assertEqual(metrics["backtracking_count"], 0)
+        for key in ("memetic_stop_reason", "local_search_calls", "local_search_neighbours",
+                    "local_search_time_seconds"):
+            self.assertIn(key, metrics)
+        self.assertNotIn("best_candidate", result["ga_diagnostics"])
+
+    def test_memetic_budget_exhaustion_keeps_best_candidate(self):
+        result = study.solve_case(PUZZLE, "memetic", population_size=8, generations=5, time_limit=0)
+        self.assertEqual(result["status"], "budget_exhausted")
+        self.assertEqual(result["metrics"]["memetic_stop_reason"], "time_limit")
+        self.assertIsNone(result["ga_best_grid"])
+        self.assertTrue(study.verify_result(PUZZLE, result))
+
+    def test_memetic_outer_timeout_has_cleanup_grace(self):
+        with tempfile.TemporaryDirectory() as directory:
+            puzzle_path = Path(directory) / "puzzle.json"
+            puzzle_path.write_text(json.dumps(PUZZLE), encoding="utf-8")
+            args = Namespace(population_size=160, generations=1500, timeout=20)
+            seen = {}
+
+            def timeout(command, **kwargs):
+                seen["timeout"] = kwargs["timeout"]
+                raise subprocess.TimeoutExpired(command, kwargs["timeout"])
+
+            with patch.object(study.subprocess, "run", side_effect=timeout):
+                record = study.run_trial(PUZZLE, puzzle_path, Path(directory) / "m.json", "memetic", 42, args)
+            self.assertEqual(seen["timeout"], 25)
+            self.assertEqual(record["status"], "timeout")
+
     def test_corrupt_metrics_are_rejected(self):
         result = study.solve_case(PUZZLE, "ours", population_size=8, generations=0)
         self.assertTrue(result["metrics"]["solution_valid"])

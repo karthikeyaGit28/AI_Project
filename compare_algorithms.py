@@ -15,14 +15,20 @@ import generate_and_solve as kakuro
 from benchmark_kakuro import SIZES, independent_validation
 from kakuro_generator import generate_rectangular_puzzle
 from kakuro_variants import baseline_search
+from kakuro_memetic import memetic_search
 from kakuro_exact import constraint_search, cp_sat_search, ensure_cp_sat_available
 from kakuro_roundingsat import roundingsat_search, ensure_roundingsat_available
 
 
 PROJECT = Path(__file__).resolve().parent
 GA_ALGORITHMS = ("basic", "domain_filtering", "dynamic_mutation", "ours")
+MEMETIC_ALGORITHMS = ("memetic",)
+# Population-based searches that report GA-phase quality and evaluations.
+EVOLUTIONARY_ALGORITHMS = GA_ALGORITHMS + MEMETIC_ALGORITHMS
 EXACT_ALGORITHMS = ("constraint_search", "cp_sat", "roundingsat")
-ALGORITHMS = GA_ALGORITHMS + EXACT_ALGORITHMS
+ALGORITHMS = GA_ALGORITHMS + MEMETIC_ALGORITHMS + EXACT_ALGORITHMS
+# Algorithms that stop cooperatively at the budget and get an outer cleanup grace.
+GRACE_ALGORITHMS = ("memetic", "roundingsat")
 DEFAULT_ALGORITHMS = GA_ALGORITHMS + ("constraint_search", "cp_sat")
 
 
@@ -134,7 +140,7 @@ def solve_case(puzzle, algorithm, seed=42, population_size=160, generations=1500
             ensure_roundingsat_available()
         return solve_exact_case(grid, whites, runs, algorithm, seed, time_limit, artifact_dir)
     start = time.perf_counter()
-    if algorithm in ("domain_filtering", "ours"):
+    if algorithm in ("domain_filtering", "ours", "memetic"):
         domains = kakuro.propagate(whites, runs)
     else:
         domains = {cell: set(range(1, 10)) for cell in whites}
@@ -146,6 +152,16 @@ def solve_case(puzzle, algorithm, seed=42, population_size=160, generations=1500
             [run for run in runs if run["direction"] == "down"], domains, seed,
             population_size=population_size, generations=generations,
             diagnostics=diagnostics,
+        )
+        ga_candidate = diagnostics.pop("best_candidate")
+    elif algorithm == "memetic":
+        # Same representation and operators as "ours", plus local search and no
+        # exact fallback. It stops itself at the remaining solving budget.
+        ga_solution, diagnostics = memetic_search(
+            whites, [run for run in runs if run["direction"] == "across"],
+            [run for run in runs if run["direction"] == "down"], domains, seed,
+            population_size=population_size, generations=generations,
+            time_limit=max(0.0, time_limit - (after_preprocessing - start)),
         )
         ga_candidate = diagnostics.pop("best_candidate")
     else:
@@ -191,6 +207,18 @@ def solve_case(puzzle, algorithm, seed=42, population_size=160, generations=1500
         "cp_sat_conflicts": None,
         "solver_status": "SOLVED" if valid else "BUDGET_EXHAUSTED",
     }
+    if algorithm == "memetic":
+        metrics.update({
+            "memetic_stop_reason": diagnostics["stop_reason"],
+            "memetic_restarts": diagnostics["restarts"],
+            "local_search_calls": diagnostics["local_search_calls"],
+            "local_search_steps": diagnostics["local_search_steps"],
+            "local_search_neighbours": diagnostics["local_search_neighbours"],
+            "local_search_improving_moves": diagnostics["local_search_improving_moves"],
+            "local_search_sideways_moves": diagnostics["local_search_sideways_moves"],
+            "local_search_fitness_reduction": diagnostics["local_search_fitness_reduction"],
+            "local_search_time_seconds": round(diagnostics["local_search_time_seconds"], 6),
+        })
     return {
         "algorithm": algorithm, "seed": seed,
         "status": "solved" if valid else "budget_exhausted",
@@ -263,7 +291,7 @@ def run_trial(puzzle, input_path, output_path, algorithm, seed, args):
                "--population-size", str(args.population_size), "--generations", str(args.generations),
                "--timeout", str(args.timeout)]
     start = time.perf_counter()
-    process_timeout = args.timeout + 5 if algorithm == "roundingsat" else args.timeout
+    process_timeout = args.timeout + 5 if algorithm in GRACE_ALGORITHMS else args.timeout
     record["process_timeout_seconds"] = process_timeout
     try:
         process = subprocess.run(command, cwd=PROJECT, capture_output=True, text=True,
@@ -342,12 +370,14 @@ def main(argv=None):
         "native_cleanup_grace_seconds": 5 if "roundingsat" in args.algorithms else 0,
         "algorithm_order": "rotated by size/trial; sequential fresh processes",
     }
+    if "memetic" in args.algorithms:
+        settings["memetic_cleanup_grace_seconds"] = 5
     hashes = {
         name: hashlib.sha256((PROJECT / name).read_bytes()).hexdigest()
         for name in ("generate_and_solve.py", "kakuro_variants.py", "kakuro_generator.py",
                      "compare_algorithms.py", "benchmark_kakuro.py", "algorithm_study_report.py",
                      "kakuro_exact.py", "requirements.txt", "requirements-lock.txt",
-                     "kakuro_roundingsat.py", "tools/roundingsat/manifest.json")
+                     "kakuro_roundingsat.py", "kakuro_memetic.py", "tools/roundingsat/manifest.json")
     }
     report_path = args.output_dir / "study.json"
     if args.resume and report_path.exists():
@@ -402,7 +432,7 @@ def main(argv=None):
                 (args.output_dir / "study.md").write_text(render_markdown(report), encoding="utf-8")
                 metrics = record.get("result", {}).get("metrics", {})
                 detail = (f"GA fitness={metrics.get('best_ga_fitness', 'N/A')}"
-                          if algorithm in GA_ALGORITHMS else
+                          if algorithm in EVOLUTIONARY_ALGORITHMS else
                           f"status={metrics.get('solver_status', 'N/A')}, branches={metrics.get('search_branches', 'N/A')}")
                 print(f"  {record['status']}: valid={metrics.get('solution_valid', 'N/A')}, "
                       f"{detail}, "

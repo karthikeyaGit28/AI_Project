@@ -300,3 +300,48 @@ To expand to five seeds later, or resume this unchanged two-method study:
 & '.\.venv\Scripts\python.exe' -E -s compare_algorithms.py --algorithms ours roundingsat --trials 5 --output-dir roundingsat_comparison_5_runs
 & '.\.venv\Scripts\python.exe' -E -s compare_algorithms.py --algorithms ours roundingsat --output-dir roundingsat_comparison --resume
 ```
+
+## Memetic algorithm (GA + local search) versus our hybrid
+
+`kakuro_memetic.py` implements a memetic algorithm: our hybrid's genetic algorithm
+with Lamarckian local search added, and **no exact backtracking fallback**. Comparing
+it with our hybrid isolates one design choice on an identical GA: improving
+individuals with local search during evolution, versus finishing a failed GA with
+exact search afterwards.
+
+- **Shared with our hybrid (unchanged):** propagated cell domains, individuals
+  built from valid across-run assignments (across clues always hold), down-run
+  fitness, top-third parents, at most eight elites, run-based crossover,
+  conflict-focused adaptive mutation, and a restart after 100 stagnant generations.
+- **Local search:** each initial or offspring individual is improved with
+  probability 0.15. A step picks a violated down run and an across run that
+  crosses it, then moves that across run to its best neighbour (steepest descent,
+  random tie-breaking). Neighbours are every valid assignment of the run when it
+  has at most 128, otherwise every sum-preserving two-cell change plus
+  eight freshly sampled valid assignments. All neighbours keep the across
+  clue and propagated domains satisfied. Improving and equal-fitness moves are
+  accepted; the same run is not moved twice in a row. Search stops after
+  150 steps or 25 consecutive non-improving steps, and the
+  improved genes replace the individual.
+- **Budget:** population 160 and 1,500 generations, like our hybrid. The memetic
+  search also checks the solving time budget itself and returns its best
+  candidate when it runs out. Like RoundingSat, it gets a five-second outer
+  cleanup grace beyond the budget.
+
+Fitness evaluations count whole-population evaluations only, exactly as for the
+other GAs. Local-search work (calls, steps, scored neighbours, improving and
+sideways moves, fitness reduction, time) is reported separately, and its time is
+included in the GA and total times. The memetic algorithm is optional; the default
+selection is still the previous six algorithms.
+
+```powershell
+& '.\.venv\Scripts\python.exe' -E -s compare_algorithms.py --algorithms ours memetic --output-dir memetic_comparison
+```
+
+The report adds a paired *Memetic algorithm versus our hybrid* table (time, how
+the hybrid finished, memetic validity and generations, time ratio when both
+solved) and a per-trial local-search diagnostics table. Single-seed timings vary
+substantially with machine load, so treat small time differences as ties. Use
+`--trials 5` for repeated observations, or add the memetic algorithm to a larger
+selection, for example
+`--algorithms basic domain_filtering dynamic_mutation ours memetic constraint_search cp_sat`.
