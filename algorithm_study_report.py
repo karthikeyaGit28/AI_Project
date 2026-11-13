@@ -6,12 +6,16 @@ from statistics import mean
 GA_ALGORITHMS = ("basic", "domain_filtering", "dynamic_mutation", "ours")
 DEFAULT_ALGORITHMS = GA_ALGORITHMS + ("constraint_search", "cp_sat")
 EXACT_ALGORITHMS = ("constraint_search", "cp_sat", "roundingsat")
-ALGORITHMS = GA_ALGORITHMS + EXACT_ALGORITHMS
+MEMETIC_ALGORITHMS = ("memetic",)
+# Population-based searches with a GA phase, GA fitness, and evaluation counts.
+EVOLUTIONARY_ALGORITHMS = GA_ALGORITHMS + MEMETIC_ALGORITHMS
+ALGORITHMS = GA_ALGORITHMS + MEMETIC_ALGORITHMS + EXACT_ALGORITHMS
 ALGORITHM_NAMES = {
     "basic": "Basic GA",
     "domain_filtering": "GA + domain filtering",
     "dynamic_mutation": "GA + dynamic mutation",
     "ours": "Our hybrid algorithm",
+    "memetic": "Memetic algorithm",
     "constraint_search": "Constraint Search",
     "cp_sat": "CP-SAT",
     "roundingsat": "RoundingSat",
@@ -27,7 +31,7 @@ def _algorithms(report):
     # Preserve the original four-algorithm layout for historical reports.
     has_exact = any(record["algorithm"] in EXACT_ALGORITHMS for record in report.get("records", []))
     if any(record["algorithm"] == "roundingsat" for record in report.get("records", [])):
-        return ALGORITHMS
+        return GA_ALGORITHMS + EXACT_ALGORITHMS
     return DEFAULT_ALGORITHMS if has_exact else GA_ALGORITHMS
 
 
@@ -65,9 +69,9 @@ def summarize(report):
             "completed": len(completed),
             "solved": sum(bool(item.get("solution_valid")) for item in metrics),
             "ga_solved": (sum(bool(item.get("ga_solution_valid")) for item in metrics)
-                          if algorithm in GA_ALGORITHMS else None),
+                          if algorithm in EVOLUTIONARY_ALGORITHMS else None),
             "fallback_solved": sum(bool(item.get("fallback_used")) and bool(item.get("solution_valid"))
-                                   for item in metrics) if algorithm in GA_ALGORITHMS else None,
+                                   for item in metrics) if algorithm in EVOLUTIONARY_ALGORITHMS else None,
             "mean_time_seconds": _mean(item.get("execution_time_seconds") for item in metrics),
             "mean_evaluations": _mean(item.get("genetic_fitness_evaluations") for item in metrics),
             "mean_ga_run_satisfaction_percent": _mean(item.get("ga_satisfied_runs_percent") for item in metrics),
@@ -123,13 +127,14 @@ def render_markdown(report):
     seeds = settings.get("seeds", [])
     algorithms = _algorithms(report)
     records = [record for record in report.get("records", []) if record["algorithm"] in algorithms]
-    ga_algorithms = [algorithm for algorithm in algorithms if algorithm in GA_ALGORITHMS]
+    ga_algorithms = [algorithm for algorithm in algorithms if algorithm in EVOLUTIONARY_ALGORITHMS]
     exact_algorithms = [algorithm for algorithm in algorithms if algorithm in ("constraint_search", "cp_sat")]
     has_roundingsat = "roundingsat" in algorithms
     summary = summarize(report)
     rows_by_algorithm = {row["algorithm"]: row for row in summary}
     planned_trials = len(_size_labels(report)) * len(seeds) * len(algorithms)
-    count_name = {2: "two", 4: "four", 6: "six", 7: "seven"}.get(len(algorithms), str(len(algorithms)))
+    count_name = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven",
+                  8: "eight"}.get(len(algorithms), str(len(algorithms)))
     lines = [
         f"# Kakuro: {count_name}-algorithm evaluation study", "",
         f"Recorded trials: {len(records)} of {planned_trials} planned. "
@@ -157,6 +162,10 @@ def render_markdown(report):
         "ours": "| Our hybrid algorithm | Iterative propagation and domain-indexed genes | Valid across-run "
         "sampling, run-based crossover, conflict-focused mutation with adaptive probability | "
         "Restart after 100 stagnant generations; exact backtracking if GA fails |",
+        "memetic": "| Memetic algorithm | Same propagated domains and domain-restricted genes as our hybrid | "
+        "Our hybrid's GA operators plus Lamarckian local search on individuals (probability 0.15): "
+        "steepest-descent reassignment of an across run crossing a violated down run | "
+        "Same restart rule; no exact fallback (stops at the GA or time budget) |",
         "constraint_search": "| Constraint Search | Digits 1-9 narrowed by iterative run propagation | Standalone "
         "minimum-remaining-values (MRV) backtracking with propagation after decisions | No GA; "
         "the constraint search runs directly |",
@@ -175,6 +184,19 @@ def render_markdown(report):
         "different allowed digit when one is available. Filtering and dynamic mutation are "
         "independent additions to Basic GA, not cumulative variants. Adaptive probability is "
         "`min(0.90, 0.25 + 0.65 * stagnant_generations / 100)`."])
+    if "memetic" in algorithms:
+        lines.extend(["", "The memetic algorithm reuses our hybrid's GA unchanged (initial valid "
+        "across-run sampling, run-based crossover, conflict-focused adaptive mutation, elitism, and "
+        "restarts) and adds local search to each new individual with probability 0.15. One local-search "
+        "step picks a violated down run and an across run crossing it, then moves that across run to its "
+        "best neighbour: every valid assignment when the run has at most 128, otherwise every "
+        "sum-preserving two-cell change plus eight freshly sampled valid assignments. Improving and "
+        "equal-fitness moves are accepted, the same run is not moved twice in a row, and search stops "
+        "after 150 steps or 25 consecutive non-improving steps. Improved genes replace the individual "
+        "(Lamarckian). Every neighbour keeps the across clues and propagated domains satisfied. "
+        "There is no exact fallback, so its solutions are produced by the GA and local search alone. "
+        "It checks the solving budget cooperatively and reports its best candidate when the "
+        "budget ends; its outer process limit adds the same five-second cleanup grace as RoundingSat."])
     lines.extend(["",
         "## Metric definitions", "",
         "- **Valid solution:** every white cell has a digit 1-9, and every across/down run has "
@@ -396,6 +418,8 @@ def render_markdown(report):
                              "opb_variables", "opb_constraints")],
                           _yes(diagnostics.get("timed_out")), _yes(metrics.get("solution_valid"))]
             lines.append("| " + " | ".join(prefix + values) + " |")
+    if "memetic" in algorithms:
+        lines.extend(_memetic_sections(report, records, algorithms))
     lines.extend([
         "", "## Every measured trial", "",
         "All times are seconds. A completed status includes unsuccessful searches. GA fitness "
@@ -463,6 +487,17 @@ def render_markdown(report):
                       "Its final validity and total runtime include this work; its pre-fallback "
                       "fitness, GA-only validity, and separately reported fallback time show the "
                       "contribution of each stage."])
+    if "memetic" in algorithms:
+        memetic = rows_by_algorithm.get("memetic")
+        if memetic and memetic["trials"]:
+            lines.extend(["", f"The memetic algorithm solved {memetic['solved']} of {memetic['trials']} "
+                          "attempted trials with no exact fallback. Its fitness-evaluation count covers "
+                          "whole-population evaluations only; local-search neighbour scoring is reported "
+                          "separately and its time is included in the GA and total times."])
+        if "ours" in algorithms:
+            lines.extend(["", "Memetic versus our hybrid isolates one design choice on an identical GA: "
+                          "improving individuals by local search during evolution, versus completing a "
+                          "failed GA with exact backtracking afterwards."])
     if "constraint_search" in algorithms:
         lines.extend(["", "Constraint Search directly applies propagation and exact backtracking "
                       "without a preceding GA phase."])
@@ -495,3 +530,81 @@ def render_markdown(report):
         "also affect wall-clock measurements.", "",
     ])
     return "\n".join(lines)
+
+
+def _memetic_sections(report, records, algorithms):
+    """Paired memetic/hybrid comparison and local-search diagnostics."""
+    lines = []
+    if "ours" in algorithms:
+        lines.extend([
+            "", "## Memetic algorithm versus our hybrid", "",
+            "Both receive the same puzzle, propagated domains, population, generation limit, and GA "
+            "operators. Entries are mean seconds over completed trials; `GA`/`fallback` says how our "
+            "hybrid finished. The ratio is hybrid time divided by memetic time and is shown only "
+            "when every trial of both methods for that grid produced a valid solution.", "",
+            "| Grid | Our hybrid (s) | Hybrid solved by | Memetic (s) | Memetic valid | "
+            "Memetic generations | Hybrid / memetic time |",
+            "|---|---:|---|---:|---|---:|---:|",
+        ])
+        both_solved = memetic_faster = 0
+        for size in _size_labels(report):
+            ours = _group(report, size, "ours")
+            memetic = _group(report, size, "memetic")
+            if not ours and not memetic:
+                continue
+            ours_metrics = [record["result"]["metrics"] for record in _completed(ours)]
+            memetic_metrics = [record["result"]["metrics"] for record in _completed(memetic)]
+            ours_time = _mean(item.get("execution_time_seconds") for item in ours_metrics)
+            memetic_time = _mean(item.get("execution_time_seconds") for item in memetic_metrics)
+            ga_wins = sum(bool(item.get("ga_solution_valid")) for item in ours_metrics)
+            fallback_wins = sum(bool(item.get("fallback_used")) and bool(item.get("solution_valid"))
+                                for item in ours_metrics)
+            memetic_valid = sum(bool(item.get("solution_valid")) for item in memetic_metrics)
+            ours_valid = sum(bool(item.get("solution_valid")) for item in ours_metrics)
+            paired = (ours and memetic and ours_valid == len(ours) and memetic_valid == len(memetic))
+            ratio = ours_time / memetic_time if paired and memetic_time else None
+            if paired:
+                both_solved += 1
+                memetic_faster += ours_time > memetic_time
+            lines.append(
+                f"| {size} | {_number(ours_time, 4)} | "
+                f"{'Pending' if not ours else f'GA {ga_wins}, fallback {fallback_wins} of {len(ours)}'} | "
+                f"{_number(memetic_time, 4)} | {'Pending' if not memetic else f'{memetic_valid}/{len(memetic)}'} | "
+                f"{_number(_mean(item.get('generations_evaluated') for item in memetic_metrics), 1)} | "
+                f"{'N/A' if ratio is None else f'{ratio:,.1f}x'} |"
+            )
+        lines.extend(["", f"Grids fully solved by both: {both_solved}; memetic mean time lower on "
+                      f"{memetic_faster} of them. Single-trial timings on a loaded machine vary, so "
+                      "treat small differences as ties."])
+    lines.extend([
+        "", "## Memetic local-search diagnostics", "",
+        "Calls are individuals passed to local search; steps are run reassignment attempts; "
+        "neighbours are scored candidate assignments (incremental down-run evaluations, not full "
+        "fitness evaluations). Fitness reduction sums the improvement achieved inside local search.", "",
+        "| Grid | Seed | Status | Stop reason | Time (s) | Local-search time (s) | Generations | "
+        "Restarts | Calls | Steps | Neighbours | Improving moves | Sideways moves | Fitness reduction | "
+        "Best fitness | Valid |",
+        "|---|---:|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---|",
+    ])
+    for record in records:
+        if record["algorithm"] != "memetic":
+            continue
+        metrics = record.get("result", {}).get("metrics")
+        prefix = [record["size"], str(record["seed"]), record["status"]]
+        if record.get("status") != "completed" or not metrics:
+            lines.append("| " + " | ".join(prefix + ["N/A"] * 13) + " |")
+            continue
+        values = [
+            str(metrics.get("memetic_stop_reason") or "N/A"),
+            _number(metrics.get("execution_time_seconds"), 4),
+            _number(metrics.get("local_search_time_seconds"), 4),
+            _integer(metrics.get("generations_evaluated")),
+            *[_integer(metrics.get(key)) for key in (
+                "memetic_restarts", "local_search_calls", "local_search_steps",
+                "local_search_neighbours", "local_search_improving_moves",
+                "local_search_sideways_moves", "local_search_fitness_reduction",
+                "best_ga_fitness")],
+            _yes(metrics.get("solution_valid")),
+        ]
+        lines.append("| " + " | ".join(prefix + values) + " |")
+    return lines
