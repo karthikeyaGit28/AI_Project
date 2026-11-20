@@ -1,0 +1,415 @@
+{
+  "algorithm": "ours",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 0.08679,
+    "preprocessing_time_seconds": 0.06014,
+    "ga_time_seconds": 0.026648,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": 0,
+    "generations_evaluated": 0,
+    "backtracking_count": 0,
+    "solution_valid": true,
+    "ga_solution_valid": true,
+    "fallback_used": false,
+    "best_ga_fitness": 0,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": 100.0,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 39,
+    "white_cells_total": 39,
+    "run_count": 17,
+    "domain_reduction_percent": 17.37891737891738,
+    "solution_validity_rate_percent": 100.0,
+    "search_time_seconds": null,
+    "search_branches": null,
+    "search_nodes": null,
+    "cp_sat_conflicts": null,
+    "solver_status": "SOLVED",
+    "memetic_stop_reason": "solved_by_local_search",
+    "memetic_restarts": 0,
+    "local_search_calls": 2,
+    "local_search_steps": 67,
+    "local_search_neighbours": 1552,
+    "local_search_improving_moves": 19,
+    "local_search_sideways_moves": 13,
+    "local_search_fitness_reduction": 177,
+    "local_search_time_seconds": 0.017193
+  },
+  "ga_diagnostics": {
+    "evaluations": 0,
+    "generations_evaluated": 0,
+    "best_fitness": 0,
+    "fitness_history": [],
+    "restarts": 0,
+    "mutation_rate_min": null,
+    "mutation_rate_max": null,
+    "local_search_calls": 2,
+    "local_search_steps": 67,
+    "local_search_neighbours": 1552,
+    "local_search_improving_moves": 19,
+    "local_search_sideways_moves": 13,
+    "local_search_fitness_reduction": 177,
+    "local_search_solutions": 1,
+    "local_search_time_seconds": 0.017193199950270355,
+    "stop_reason": "solved_by_local_search",
+    "settings": {
+      "local_search_rate": 0.15,
+      "local_search_steps": 150,
+      "local_search_patience": 25,
+      "neighbourhood_limit": 128,
+      "random_neighbours": 8,
+      "time_limit_seconds": 89.9548947000294
+    },
+    "execution_time_seconds": 0.02651049999985844
+  },
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 38
+      },
+      {
+        "down": 33
+      },
+      {
+        "down": 28
+      },
+      {
+        "down": 20
+      },
+      {
+        "down": 18
+      },
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 30
+      },
+      8,
+      6,
+      2,
+      9,
+      5,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 28
+      },
+      4,
+      9,
+      6,
+      1,
+      8,
+      {
+        "down": 25
+      },
+      {
+        "down": 27
+      }
+    ],
+    [
+      {
+        "across": 28
+      },
+      1,
+      5,
+      3,
+      7,
+      4,
+      6,
+      2
+    ],
+    [
+      {
+        "across": 35
+      },
+      9,
+      7,
+      4,
+      3,
+      1,
+      5,
+      6
+    ],
+    [
+      {
+        "across": 15
+      },
+      7,
+      3,
+      5,
+      "#",
+      {
+        "across": 17
+      },
+      9,
+      8
+    ],
+    [
+      {
+        "across": 11
+      },
+      3,
+      1,
+      7,
+      "#",
+      {
+        "across": 10
+      },
+      3,
+      7
+    ],
+    [
+      {
+        "across": 9
+      },
+      6,
+      2,
+      1,
+      "#",
+      {
+        "across": 6
+      },
+      2,
+      4
+    ]
+  ],
+  "ga_best_grid": [
+    [
+      "#",
+      {
+        "down": 38
+      },
+      {
+        "down": 33
+      },
+      {
+        "down": 28
+      },
+      {
+        "down": 20
+      },
+      {
+        "down": 18
+      },
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 30
+      },
+      8,
+      6,
+      2,
+      9,
+      5,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 28
+      },
+      4,
+      9,
+      6,
+      1,
+      8,
+      {
+        "down": 25
+      },
+      {
+        "down": 27
+      }
+    ],
+    [
+      {
+        "across": 28
+      },
+      1,
+      5,
+      3,
+      7,
+      4,
+      6,
+      2
+    ],
+    [
+      {
+        "across": 35
+      },
+      9,
+      7,
+      4,
+      3,
+      1,
+      5,
+      6
+    ],
+    [
+      {
+        "across": 15
+      },
+      7,
+      3,
+      5,
+      "#",
+      {
+        "across": 17
+      },
+      9,
+      8
+    ],
+    [
+      {
+        "across": 11
+      },
+      3,
+      1,
+      7,
+      "#",
+      {
+        "across": 10
+      },
+      3,
+      7
+    ],
+    [
+      {
+        "across": 9
+      },
+      6,
+      2,
+      1,
+      "#",
+      {
+        "across": 6
+      },
+      2,
+      4
+    ]
+  ],
+  "best_candidate_grid": [
+    [
+      "#",
+      {
+        "down": 38
+      },
+      {
+        "down": 33
+      },
+      {
+        "down": 28
+      },
+      {
+        "down": 20
+      },
+      {
+        "down": 18
+      },
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 30
+      },
+      8,
+      6,
+      2,
+      9,
+      5,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 28
+      },
+      4,
+      9,
+      6,
+      1,
+      8,
+      {
+        "down": 25
+      },
+      {
+        "down": 27
+      }
+    ],
+    [
+      {
+        "across": 28
+      },
+      1,
+      5,
+      3,
+      7,
+      4,
+      6,
+      2
+    ],
+    [
+      {
+        "across": 35
+      },
+      9,
+      7,
+      4,
+      3,
+      1,
+      5,
+      6
+    ],
+    [
+      {
+        "across": 15
+      },
+      7,
+      3,
+      5,
+      "#",
+      {
+        "across": 17
+      },
+      9,
+      8
+    ],
+    [
+      {
+        "across": 11
+      },
+      3,
+      1,
+      7,
+      "#",
+      {
+        "across": 10
+      },
+      3,
+      7
+    ],
+    [
+      {
+        "across": 9
+      },
+      6,
+      2,
+      1,
+      "#",
+      {
+        "across": 6
+      },
+      2,
+      4
+    ]
+  ]
+}

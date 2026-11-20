@@ -1,0 +1,358 @@
+{
+  "format": "kakuro-grid-v1",
+  "generator": "rectangular-bands-v1",
+  "dimension_convention": "full board including top and left clue borders",
+  "rows": 13,
+  "columns": 17,
+  "seed": 42,
+  "grid": [
+    [
+      "#",
+      "#",
+      "#",
+      {
+        "down": 28
+      },
+      {
+        "down": 27
+      },
+      {
+        "down": 9
+      },
+      {
+        "down": 6
+      },
+      {
+        "down": 43
+      },
+      {
+        "down": 41
+      },
+      {
+        "down": 26
+      },
+      {
+        "down": 19
+      },
+      "#",
+      "#",
+      {
+        "down": 27
+      },
+      {
+        "down": 32
+      },
+      {
+        "down": 6
+      },
+      {
+        "down": 9
+      }
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 42
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "#",
+      {
+        "across": 14
+      },
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "#",
+      {
+        "down": 42
+      },
+      {
+        "across": 36,
+        "down": 36
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "down": 36
+      },
+      {
+        "across": 18,
+        "down": 44
+      },
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "across": 19
+      },
+      null,
+      null,
+      null,
+      null,
+      "#",
+      {
+        "across": 40
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 14
+      },
+      null,
+      null,
+      null,
+      null,
+      {
+        "down": 40
+      },
+      {
+        "across": 37,
+        "down": 37
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "down": 37
+      },
+      {
+        "down": 39
+      }
+    ],
+    [
+      {
+        "across": 44
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "#",
+      {
+        "across": 28
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "across": 38
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "down": 28
+      },
+      {
+        "across": 35,
+        "down": 35
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "across": 9
+      },
+      null,
+      null,
+      "#",
+      {
+        "across": 39
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "#",
+      {
+        "across": 10
+      },
+      null,
+      null
+    ],
+    [
+      {
+        "across": 13
+      },
+      null,
+      null,
+      {
+        "down": 20
+      },
+      {
+        "across": 42,
+        "down": 19
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "down": 19
+      },
+      {
+        "across": 8,
+        "down": 14
+      },
+      null,
+      null
+    ],
+    [
+      {
+        "across": 34
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "#",
+      {
+        "across": 41
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "across": 28
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "down": 13
+      },
+      {
+        "across": 40,
+        "down": 14
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 36
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "#",
+      {
+        "across": 18
+      },
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 44
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "#",
+      {
+        "across": 19
+      },
+      null,
+      null,
+      null,
+      null
+    ]
+  ]
+}

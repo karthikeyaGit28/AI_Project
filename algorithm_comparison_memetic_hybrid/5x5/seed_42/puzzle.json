@@ -1,0 +1,60 @@
+{
+  "format": "kakuro-grid-v1",
+  "generator": "rectangular-bands-v1",
+  "dimension_convention": "full board including top and left clue borders",
+  "rows": 5,
+  "columns": 5,
+  "seed": 42,
+  "grid": [
+    [
+      "#",
+      "#",
+      "#",
+      {
+        "down": 19
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 10
+      },
+      null,
+      null
+    ],
+    [
+      "#",
+      {
+        "down": 10
+      },
+      {
+        "across": 8,
+        "down": 8
+      },
+      null,
+      null
+    ],
+    [
+      {
+        "across": 19
+      },
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "across": 14
+      },
+      null,
+      null,
+      null,
+      null
+    ]
+  ]
+}

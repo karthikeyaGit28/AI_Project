@@ -28,7 +28,7 @@ EVOLUTIONARY_ALGORITHMS = GA_ALGORITHMS + MEMETIC_ALGORITHMS
 EXACT_ALGORITHMS = ("constraint_search", "cp_sat", "roundingsat")
 ALGORITHMS = GA_ALGORITHMS + MEMETIC_ALGORITHMS + EXACT_ALGORITHMS
 # Algorithms that stop cooperatively at the budget and get an outer cleanup grace.
-GRACE_ALGORITHMS = ("memetic", "roundingsat")
+GRACE_ALGORITHMS = ("ours", "memetic", "roundingsat")
 DEFAULT_ALGORITHMS = GA_ALGORITHMS + ("constraint_search", "cp_sat")
 
 
@@ -145,23 +145,19 @@ def solve_case(puzzle, algorithm, seed=42, population_size=160, generations=1500
     else:
         domains = {cell: set(range(1, 10)) for cell in whites}
     after_preprocessing = time.perf_counter()
-    if algorithm == "ours":
-        diagnostics = {}
-        ga_solution, _ = kakuro.genetic_search(
-            whites, [run for run in runs if run["direction"] == "across"],
-            [run for run in runs if run["direction"] == "down"], domains, seed,
-            population_size=population_size, generations=generations,
-            diagnostics=diagnostics,
-        )
-        ga_candidate = diagnostics.pop("best_candidate")
-    elif algorithm == "memetic":
-        # Same representation and operators as "ours", plus local search and no
-        # exact fallback. It stops itself at the remaining solving budget.
+    if algorithm in ("ours", "memetic"):
+        # "ours" is the full hybrid: memetic evolution followed by exact
+        # fallback. Standalone "memetic" uses the same evolutionary phase but
+        # reports whether it solves without exact search.
+        remaining_budget = max(0.0, time_limit - (after_preprocessing - start))
+        # Give the standalone memetic run the same evolutionary wall budget as
+        # the hybrid, reserving the remainder for exact fallback in "ours".
+        memetic_budget = remaining_budget * 0.75
         ga_solution, diagnostics = memetic_search(
             whites, [run for run in runs if run["direction"] == "across"],
             [run for run in runs if run["direction"] == "down"], domains, seed,
             population_size=population_size, generations=generations,
-            time_limit=max(0.0, time_limit - (after_preprocessing - start)),
+            time_limit=memetic_budget,
         )
         ga_candidate = diagnostics.pop("best_candidate")
     else:
@@ -207,7 +203,7 @@ def solve_case(puzzle, algorithm, seed=42, population_size=160, generations=1500
         "cp_sat_conflicts": None,
         "solver_status": "SOLVED" if valid else "BUDGET_EXHAUSTED",
     }
-    if algorithm == "memetic":
+    if algorithm in ("ours", "memetic"):
         metrics.update({
             "memetic_stop_reason": diagnostics["stop_reason"],
             "memetic_restarts": diagnostics["restarts"],
@@ -322,6 +318,8 @@ def main(argv=None):
     parser.add_argument("--population-size", type=int, default=160)
     parser.add_argument("--generations", type=int, default=1500)
     parser.add_argument("--timeout", type=float, default=120)
+    parser.add_argument("--sizes", nargs="+", choices=[f"{rows}x{columns}" for rows, columns in SIZES],
+                        help="full-board sizes to include; default is all twelve")
     parser.add_argument("--output-dir", type=Path, default=Path("algorithm_comparison_six"))
     parser.add_argument("--algorithms", nargs="+", choices=ALGORITHMS, default=list(DEFAULT_ALGORITHMS))
     parser.add_argument("--resume", action="store_true")
@@ -362,8 +360,10 @@ def main(argv=None):
 
     args.output_dir = args.output_dir.resolve()
     args.output_dir.mkdir(parents=True, exist_ok=True)
+    selected_sizes = (SIZES if args.sizes is None else
+                      [size for size in SIZES if f"{size[0]}x{size[1]}" in args.sizes])
     settings = {
-        "sizes": [list(size) for size in SIZES], "seeds": list(range(args.seed, args.seed + args.trials)),
+        "sizes": [list(size) for size in selected_sizes], "seeds": list(range(args.seed, args.seed + args.trials)),
         "population_size": args.population_size, "generations": args.generations,
         "timeout_seconds": args.timeout, "dimension_convention": "board",
         "algorithms": args.algorithms, "cp_sat_workers": 1 if "cp_sat" in args.algorithms else None,
@@ -400,7 +400,7 @@ def main(argv=None):
             "records": [], "summary": [],
         }
     case_index = 0
-    for rows, columns in SIZES:
+    for rows, columns in selected_sizes:
         for seed in settings["seeds"]:
             case_dir = args.output_dir / f"{rows}x{columns}" / f"seed_{seed}"
             case_dir.mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,1077 @@
+{
+  "algorithm": "ours",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 18.039442,
+    "preprocessing_time_seconds": 0.106115,
+    "ga_time_seconds": 17.933324,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": 9280,
+    "generations_evaluated": 58,
+    "backtracking_count": 0,
+    "solution_valid": true,
+    "ga_solution_valid": true,
+    "fallback_used": false,
+    "best_ga_fitness": 0,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": 100.0,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 137,
+    "white_cells_total": 137,
+    "run_count": 48,
+    "domain_reduction_percent": 12.246553122465532,
+    "solution_validity_rate_percent": 100.0,
+    "search_time_seconds": null,
+    "search_branches": null,
+    "search_nodes": null,
+    "cp_sat_conflicts": null,
+    "solver_status": "SOLVED",
+    "memetic_stop_reason": "solved_by_local_search",
+    "memetic_restarts": 0,
+    "local_search_calls": 1375,
+    "local_search_steps": 102276,
+    "local_search_neighbours": 3475724,
+    "local_search_improving_moves": 23245,
+    "local_search_sideways_moves": 29246,
+    "local_search_fitness_reduction": 205822,
+    "local_search_time_seconds": 16.981906
+  },
+  "ga_diagnostics": {
+    "evaluations": 9280,
+    "generations_evaluated": 58,
+    "best_fitness": 0,
+    "fitness_history": [
+      10,
+      10,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      4,
+      4,
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "restarts": 0,
+    "mutation_rate_min": 0.25,
+    "mutation_rate_max": 0.549,
+    "local_search_calls": 1375,
+    "local_search_steps": 102276,
+    "local_search_neighbours": 3475724,
+    "local_search_improving_moves": 23245,
+    "local_search_sideways_moves": 29246,
+    "local_search_fitness_reduction": 205822,
+    "local_search_solutions": 1,
+    "local_search_time_seconds": 16.98190629889723,
+    "stop_reason": "solved_by_local_search",
+    "settings": {
+      "local_search_rate": 0.15,
+      "local_search_steps": 150,
+      "local_search_patience": 25,
+      "neighbourhood_limit": 128,
+      "random_neighbours": 8,
+      "time_limit_seconds": 89.92041405002237
+    },
+    "execution_time_seconds": 17.93256020010449
+  },
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 15
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 36
+      },
+      {
+        "down": 44
+      },
+      {
+        "down": 21
+      },
+      {
+        "down": 19
+      },
+      "#",
+      "#",
+      {
+        "down": 27
+      },
+      {
+        "down": 25
+      },
+      {
+        "down": 30
+      },
+      {
+        "down": 11
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      {
+        "across": 32
+      },
+      7,
+      4,
+      1,
+      8,
+      9,
+      3,
+      "#",
+      {
+        "across": 35
+      },
+      9,
+      6,
+      8,
+      7,
+      5
+    ],
+    [
+      {
+        "across": 36
+      },
+      8,
+      9,
+      6,
+      5,
+      7,
+      1,
+      {
+        "down": 41
+      },
+      {
+        "across": 28,
+        "down": 42
+      },
+      1,
+      8,
+      6,
+      4,
+      9
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 45
+      },
+      7,
+      9,
+      1,
+      8,
+      3,
+      4,
+      6,
+      2,
+      5,
+      "#",
+      "#"
+    ],
+    [
+      "#",
+      {
+        "down": 45
+      },
+      {
+        "across": 45,
+        "down": 45
+      },
+      5,
+      6,
+      4,
+      7,
+      9,
+      8,
+      2,
+      3,
+      1,
+      {
+        "down": 45
+      },
+      {
+        "down": 45
+      }
+    ],
+    [
+      {
+        "across": 17
+      },
+      5,
+      3,
+      2,
+      7,
+      "#",
+      {
+        "across": 32
+      },
+      6,
+      2,
+      5,
+      1,
+      3,
+      7,
+      8
+    ],
+    [
+      {
+        "across": 10
+      },
+      4,
+      1,
+      3,
+      2,
+      {
+        "down": 30
+      },
+      {
+        "across": 30,
+        "down": 32
+      },
+      2,
+      1,
+      4,
+      5,
+      7,
+      8,
+      3
+    ],
+    [
+      {
+        "across": 40
+      },
+      8,
+      6,
+      4,
+      3,
+      9,
+      2,
+      1,
+      7,
+      "#",
+      "#",
+      {
+        "across": 7
+      },
+      6,
+      1
+    ],
+    [
+      {
+        "across": 39
+      },
+      1,
+      7,
+      8,
+      4,
+      2,
+      3,
+      5,
+      9,
+      {
+        "down": 24
+      },
+      {
+        "down": 26
+      },
+      {
+        "across": 5,
+        "down": 28
+      },
+      3,
+      2
+    ],
+    [
+      {
+        "across": 11
+      },
+      6,
+      5,
+      "#",
+      {
+        "across": 45
+      },
+      4,
+      1,
+      7,
+      5,
+      2,
+      8,
+      3,
+      9,
+      6
+    ],
+    [
+      {
+        "across": 13
+      },
+      9,
+      4,
+      {
+        "down": 21
+      },
+      {
+        "across": 45,
+        "down": 18
+      },
+      3,
+      4,
+      8,
+      6,
+      7,
+      2,
+      1,
+      5,
+      9
+    ],
+    [
+      {
+        "across": 36
+      },
+      7,
+      2,
+      8,
+      4,
+      6,
+      9,
+      "#",
+      {
+        "across": 28
+      },
+      5,
+      3,
+      9,
+      4,
+      7
+    ],
+    [
+      {
+        "across": 37
+      },
+      2,
+      8,
+      6,
+      9,
+      5,
+      7,
+      "#",
+      {
+        "across": 26
+      },
+      6,
+      7,
+      8,
+      1,
+      4
+    ],
+    [
+      {
+        "across": 31
+      },
+      3,
+      9,
+      7,
+      5,
+      1,
+      6,
+      "#",
+      {
+        "across": 24
+      },
+      4,
+      6,
+      7,
+      2,
+      5
+    ]
+  ],
+  "ga_best_grid": [
+    [
+      "#",
+      {
+        "down": 15
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 36
+      },
+      {
+        "down": 44
+      },
+      {
+        "down": 21
+      },
+      {
+        "down": 19
+      },
+      "#",
+      "#",
+      {
+        "down": 27
+      },
+      {
+        "down": 25
+      },
+      {
+        "down": 30
+      },
+      {
+        "down": 11
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      {
+        "across": 32
+      },
+      7,
+      4,
+      1,
+      8,
+      9,
+      3,
+      "#",
+      {
+        "across": 35
+      },
+      9,
+      6,
+      8,
+      7,
+      5
+    ],
+    [
+      {
+        "across": 36
+      },
+      8,
+      9,
+      6,
+      5,
+      7,
+      1,
+      {
+        "down": 41
+      },
+      {
+        "across": 28,
+        "down": 42
+      },
+      1,
+      8,
+      6,
+      4,
+      9
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 45
+      },
+      7,
+      9,
+      1,
+      8,
+      3,
+      4,
+      6,
+      2,
+      5,
+      "#",
+      "#"
+    ],
+    [
+      "#",
+      {
+        "down": 45
+      },
+      {
+        "across": 45,
+        "down": 45
+      },
+      5,
+      6,
+      4,
+      7,
+      9,
+      8,
+      2,
+      3,
+      1,
+      {
+        "down": 45
+      },
+      {
+        "down": 45
+      }
+    ],
+    [
+      {
+        "across": 17
+      },
+      5,
+      3,
+      2,
+      7,
+      "#",
+      {
+        "across": 32
+      },
+      6,
+      2,
+      5,
+      1,
+      3,
+      7,
+      8
+    ],
+    [
+      {
+        "across": 10
+      },
+      4,
+      1,
+      3,
+      2,
+      {
+        "down": 30
+      },
+      {
+        "across": 30,
+        "down": 32
+      },
+      2,
+      1,
+      4,
+      5,
+      7,
+      8,
+      3
+    ],
+    [
+      {
+        "across": 40
+      },
+      8,
+      6,
+      4,
+      3,
+      9,
+      2,
+      1,
+      7,
+      "#",
+      "#",
+      {
+        "across": 7
+      },
+      6,
+      1
+    ],
+    [
+      {
+        "across": 39
+      },
+      1,
+      7,
+      8,
+      4,
+      2,
+      3,
+      5,
+      9,
+      {
+        "down": 24
+      },
+      {
+        "down": 26
+      },
+      {
+        "across": 5,
+        "down": 28
+      },
+      3,
+      2
+    ],
+    [
+      {
+        "across": 11
+      },
+      6,
+      5,
+      "#",
+      {
+        "across": 45
+      },
+      4,
+      1,
+      7,
+      5,
+      2,
+      8,
+      3,
+      9,
+      6
+    ],
+    [
+      {
+        "across": 13
+      },
+      9,
+      4,
+      {
+        "down": 21
+      },
+      {
+        "across": 45,
+        "down": 18
+      },
+      3,
+      4,
+      8,
+      6,
+      7,
+      2,
+      1,
+      5,
+      9
+    ],
+    [
+      {
+        "across": 36
+      },
+      7,
+      2,
+      8,
+      4,
+      6,
+      9,
+      "#",
+      {
+        "across": 28
+      },
+      5,
+      3,
+      9,
+      4,
+      7
+    ],
+    [
+      {
+        "across": 37
+      },
+      2,
+      8,
+      6,
+      9,
+      5,
+      7,
+      "#",
+      {
+        "across": 26
+      },
+      6,
+      7,
+      8,
+      1,
+      4
+    ],
+    [
+      {
+        "across": 31
+      },
+      3,
+      9,
+      7,
+      5,
+      1,
+      6,
+      "#",
+      {
+        "across": 24
+      },
+      4,
+      6,
+      7,
+      2,
+      5
+    ]
+  ],
+  "best_candidate_grid": [
+    [
+      "#",
+      {
+        "down": 15
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 36
+      },
+      {
+        "down": 44
+      },
+      {
+        "down": 21
+      },
+      {
+        "down": 19
+      },
+      "#",
+      "#",
+      {
+        "down": 27
+      },
+      {
+        "down": 25
+      },
+      {
+        "down": 30
+      },
+      {
+        "down": 11
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      {
+        "across": 32
+      },
+      7,
+      4,
+      1,
+      8,
+      9,
+      3,
+      "#",
+      {
+        "across": 35
+      },
+      9,
+      6,
+      8,
+      7,
+      5
+    ],
+    [
+      {
+        "across": 36
+      },
+      8,
+      9,
+      6,
+      5,
+      7,
+      1,
+      {
+        "down": 41
+      },
+      {
+        "across": 28,
+        "down": 42
+      },
+      1,
+      8,
+      6,
+      4,
+      9
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 45
+      },
+      7,
+      9,
+      1,
+      8,
+      3,
+      4,
+      6,
+      2,
+      5,
+      "#",
+      "#"
+    ],
+    [
+      "#",
+      {
+        "down": 45
+      },
+      {
+        "across": 45,
+        "down": 45
+      },
+      5,
+      6,
+      4,
+      7,
+      9,
+      8,
+      2,
+      3,
+      1,
+      {
+        "down": 45
+      },
+      {
+        "down": 45
+      }
+    ],
+    [
+      {
+        "across": 17
+      },
+      5,
+      3,
+      2,
+      7,
+      "#",
+      {
+        "across": 32
+      },
+      6,
+      2,
+      5,
+      1,
+      3,
+      7,
+      8
+    ],
+    [
+      {
+        "across": 10
+      },
+      4,
+      1,
+      3,
+      2,
+      {
+        "down": 30
+      },
+      {
+        "across": 30,
+        "down": 32
+      },
+      2,
+      1,
+      4,
+      5,
+      7,
+      8,
+      3
+    ],
+    [
+      {
+        "across": 40
+      },
+      8,
+      6,
+      4,
+      3,
+      9,
+      2,
+      1,
+      7,
+      "#",
+      "#",
+      {
+        "across": 7
+      },
+      6,
+      1
+    ],
+    [
+      {
+        "across": 39
+      },
+      1,
+      7,
+      8,
+      4,
+      2,
+      3,
+      5,
+      9,
+      {
+        "down": 24
+      },
+      {
+        "down": 26
+      },
+      {
+        "across": 5,
+        "down": 28
+      },
+      3,
+      2
+    ],
+    [
+      {
+        "across": 11
+      },
+      6,
+      5,
+      "#",
+      {
+        "across": 45
+      },
+      4,
+      1,
+      7,
+      5,
+      2,
+      8,
+      3,
+      9,
+      6
+    ],
+    [
+      {
+        "across": 13
+      },
+      9,
+      4,
+      {
+        "down": 21
+      },
+      {
+        "across": 45,
+        "down": 18
+      },
+      3,
+      4,
+      8,
+      6,
+      7,
+      2,
+      1,
+      5,
+      9
+    ],
+    [
+      {
+        "across": 36
+      },
+      7,
+      2,
+      8,
+      4,
+      6,
+      9,
+      "#",
+      {
+        "across": 28
+      },
+      5,
+      3,
+      9,
+      4,
+      7
+    ],
+    [
+      {
+        "across": 37
+      },
+      2,
+      8,
+      6,
+      9,
+      5,
+      7,
+      "#",
+      {
+        "across": 26
+      },
+      6,
+      7,
+      8,
+      1,
+      4
+    ],
+    [
+      {
+        "across": 31
+      },
+      3,
+      9,
+      7,
+      5,
+      1,
+      6,
+      "#",
+      {
+        "across": 24
+      },
+      4,
+      6,
+      7,
+      2,
+      5
+    ]
+  ]
+}

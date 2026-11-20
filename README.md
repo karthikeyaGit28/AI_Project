@@ -62,19 +62,22 @@ rectangular and contain internal blocks and combined clues.
 2. Build valid run transitions using cached digit-mask states, then propagate
    supported values until the restricted cell domains stop changing. This avoids
    materializing up to 9! permutations per run.
-3. Initialize domain-indexed genes by sampling valid across-run assignments.
-4. Score down-clue sum errors and repeated digits. A zero score, together with the
-   preserved across constraints, gives a complete solution.
-5. Use selection, elitism, run-based crossover, and mutation focused on rows that
-   cross violated down clues. Mutation increases with stagnation. Restart after
-   100 generations without an improvement and stop at the generation budget.
-6. If the genetic search does not find a solution, use exact backtracking with
+3. Initialize individuals by sampling valid across-run assignments.
+4. Evolve the population with selection, elitism, run-based crossover, and
+   adaptive mutation focused on across runs that intersect violated down clues.
+   Score down-clue sum errors and repeats; zero fitness is a complete solution.
+5. Apply bounded local search to selected individuals. Each move replaces an
+   across-run assignment with a valid neighbouring assignment, reducing down-run
+   violations; improvements are written back into the individual.
+6. After 100 stagnant generations, restart with up to ten percent of the best
+   distinct candidates and fill the population with fresh individuals.
+7. If memetic search does not find a solution, use exact backtracking with
    minimum-domain selection and propagation after each decision.
-7. Independently validate every digit and run before writing a solved board.
+8. Independently validate every digit and run before writing a solved board.
 
-These steps implement the supplied flowchart. Its optional repair stage is
-omitted; the exact backtracking fallback is an additional completion step.
-Sampling valid runs is randomized but is not uniform over all valid assignments.
+The hybrid combines evolutionary search, Lamarckian local search, and exact
+backtracking fallback. Sampling valid runs is randomized but is not uniform over
+all valid assignments.
 
 ## Output and metrics
 
@@ -83,8 +86,9 @@ the original inner-matrix format, excluding the first row and column, with `null
 at internal blocks/clues. `solved_grid` is the complete, unambiguous grid with
 clues and blocks preserved and white cells replaced by digits.
 
-The metrics report solver time, failed backtracking branches, population fitness
-evaluations, solved cell count, and final validity. The legacy
+The metrics report total solver time, memetic and fallback times, local-search
+work, failed backtracking branches, population fitness evaluations, solved cell
+count, and final validity. The legacy
 `solution_validity_rate_percent` is 100 or 0 for this single result, **not** an
 empirical success rate over multiple puzzles. Search time excludes file I/O and
 parsing. The `algorithm` field identifies the stage that produced the result.
@@ -165,17 +169,19 @@ the order rotates between sizes. Each trial has a 120-second wall-clock limit.
   constraint propagation before search. Fixed mutation remains unchanged.
 - **Dynamic mutation:** Basic GA with mutation probability rising from 0.25 to
   0.90 with stagnation. This variant does not use domain filtering.
-- **Our algorithm:** the existing domain-indexed, run-preserving GA with
-  propagation, adaptive conflict-focused mutation, restarts, and exact fallback.
+- **Our hybrid:** the domain-indexed, run-preserving evolutionary search with
+  propagation, adaptive conflict-focused mutation, Lamarckian local search on
+  selected individuals, diversity-preserving restarts, and exact fallback.
 
 The saved original results in `algorithm_comparison/` include `study.md`, `study.json`, paired puzzle
-files, and a result per algorithm. Metrics distinguish the best GA candidate
-from the final post-fallback result, and include preprocessing/GA/fallback times,
-fitness evaluations, failed backtracking branches, domain reduction, and the
+files, and a result per algorithm. Metrics distinguish the best pre-fallback
+candidate from the final result, and include preprocessing, memetic, and fallback
+times, local-search work, fitness evaluations, failed backtracking branches, domain reduction, and the
 percentage of clue runs that satisfy both sum and distinctness requirements.
 A fully assigned but invalid board counts as unsolved. Fitness histories are
-retained in each result JSON. The original solver's default behavior is unchanged;
-its optional `diagnostics` argument observes the search without changing RNG use.
+retained in each result JSON. The standalone `genetic_search` function remains
+available for GA-only experiments; the command-line solver uses the memetic
+hybrid.
 
 The three baselines are independent comparisons with Basic GA. The hybrid
 changes several mechanisms and can spend additional effort on exact search,
@@ -303,16 +309,16 @@ To expand to five seeds later, or resume this unchanged two-method study:
 
 ## Memetic algorithm (GA + local search) versus our hybrid
 
-`kakuro_memetic.py` implements a memetic algorithm: our hybrid's genetic algorithm
-with Lamarckian local search added, and **no exact backtracking fallback**. Comparing
-it with our hybrid isolates one design choice on an identical GA: improving
-individuals with local search during evolution, versus finishing a failed GA with
-exact search afterwards.
+`kakuro_memetic.py` implements the same evolutionary and local-search phase used
+by our hybrid, but with **no exact backtracking fallback**. Comparing it with the
+hybrid measures the memetic search alone against the memetic search followed by
+exact search when needed.
 
-- **Shared with our hybrid (unchanged):** propagated cell domains, individuals
+- **Shared with our hybrid:** propagated cell domains, individuals
   built from valid across-run assignments (across clues always hold), down-run
   fitness, top-third parents, at most eight elites, run-based crossover,
-  conflict-focused adaptive mutation, and a restart after 100 stagnant generations.
+  conflict-focused adaptive mutation, and restarts after 100 stagnant generations
+  that retain up to ten percent of the best distinct candidates.
 - **Local search:** each initial or offspring individual is improved with
   probability 0.15. A step picks a violated down run and an across run that
   crosses it, then moves that across run to its best neighbour (steepest descent,
@@ -324,19 +330,23 @@ exact search afterwards.
   150 steps or 25 consecutive non-improving steps, and the
   improved genes replace the individual.
 - **Budget:** population 160 and 1,500 generations, like our hybrid. The memetic
-  search also checks the solving time budget itself and returns its best
-  candidate when it runs out. Like RoundingSat, it gets a five-second outer
-  cleanup grace beyond the budget.
+  search also checks its time budget and returns its best candidate when it runs
+  out. In paired comparisons, standalone memetic and the hybrid receive the same
+  memetic-search time budget; the hybrid reserves the remainder for fallback.
 
 Fitness evaluations count whole-population evaluations only, exactly as for the
 other GAs. Local-search work (calls, steps, scored neighbours, improving and
 sideways moves, fitness reduction, time) is reported separately, and its time is
-included in the GA and total times. The memetic algorithm is optional; the default
-selection is still the previous six algorithms.
+included in the evolutionary and total times. The standalone memetic algorithm is
+optional and has no exact fallback; `ours` identifies the memetic-plus-exact
+hybrid.
 
 ```powershell
 & '.\.venv\Scripts\python.exe' -E -s compare_algorithms.py --algorithms ours memetic --output-dir memetic_comparison
 ```
+
+To time a selected subset of the fixed full-board sizes, add for example
+`--sizes 4x4 5x5 6x6`; omitting `--sizes` runs all twelve sizes.
 
 The report adds a paired *Memetic algorithm versus our hybrid* table (time, how
 the hybrid finished, memetic validity and generations, time ratio when both

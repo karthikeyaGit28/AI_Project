@@ -284,9 +284,13 @@ def memetic_search(whites, across_runs, down_runs, domains, seed,
             return dict(genes)
         return None
 
-    def new_population():
-        population = []
+    def new_population(retained=()):
+        # Keep strong, distinct candidates after a restart so useful local
+        # improvements are not thrown away with the stagnant population.
+        population = [dict(candidate) for candidate in retained]
         for _ in range(population_size):
+            if len(population) >= population_size:
+                break
             if timed_out():
                 return population, None
             genes = make_individual()
@@ -330,9 +334,19 @@ def memetic_search(whites, across_runs, down_runs, domains, seed,
             stagnant += 1
         if stagnant >= 100:
             diagnostics["restarts"] += 1
+            survivor_count = min(max(1, population_size // 10), population_size)
+            retained = []
+            seen = set()
+            for _, candidate in scored:
+                signature = tuple(candidate[cell] for cell in whites)
+                if signature not in seen:
+                    retained.append(dict(candidate))
+                    seen.add(signature)
+                    if len(retained) == survivor_count:
+                        break
             best_score = float("inf")
             stagnant = 0
-            population, solved = new_population()
+            population, solved = new_population(retained)
             if solved is not None:
                 return finish(solved, "solved_by_local_search")
             continue

@@ -1,0 +1,223 @@
+{
+  "algorithm": "ours",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 0.011562,
+    "preprocessing_time_seconds": 0.005736,
+    "ga_time_seconds": 0.005824,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": 0,
+    "generations_evaluated": 0,
+    "backtracking_count": 0,
+    "solution_valid": true,
+    "ga_solution_valid": true,
+    "fallback_used": false,
+    "best_ga_fitness": 0,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": 100.0,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 12,
+    "white_cells_total": 12,
+    "run_count": 8,
+    "domain_reduction_percent": 21.29629629629629,
+    "solution_validity_rate_percent": 100.0,
+    "search_time_seconds": null,
+    "search_branches": null,
+    "search_nodes": null,
+    "cp_sat_conflicts": null,
+    "solver_status": "SOLVED",
+    "memetic_stop_reason": "solved_by_local_search",
+    "memetic_restarts": 0,
+    "local_search_calls": 2,
+    "local_search_steps": 38,
+    "local_search_neighbours": 1349,
+    "local_search_improving_moves": 7,
+    "local_search_sideways_moves": 12,
+    "local_search_fitness_reduction": 52,
+    "local_search_time_seconds": 0.003859
+  },
+  "ga_diagnostics": {
+    "evaluations": 0,
+    "generations_evaluated": 0,
+    "best_fitness": 0,
+    "fitness_history": [],
+    "restarts": 0,
+    "mutation_rate_min": null,
+    "mutation_rate_max": null,
+    "local_search_calls": 2,
+    "local_search_steps": 38,
+    "local_search_neighbours": 1349,
+    "local_search_improving_moves": 7,
+    "local_search_sideways_moves": 12,
+    "local_search_fitness_reduction": 52,
+    "local_search_solutions": 1,
+    "local_search_time_seconds": 0.0038592000491917133,
+    "stop_reason": "solved_by_local_search",
+    "settings": {
+      "local_search_rate": 0.15,
+      "local_search_steps": 150,
+      "local_search_patience": 25,
+      "neighbourhood_limit": 128,
+      "random_neighbours": 8,
+      "time_limit_seconds": 89.99569792498369
+    },
+    "execution_time_seconds": 0.005784699926152825
+  },
+  "solved_grid": [
+    [
+      "#",
+      "#",
+      "#",
+      {
+        "down": 19
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 10
+      },
+      8,
+      2
+    ],
+    [
+      "#",
+      {
+        "down": 10
+      },
+      {
+        "across": 8,
+        "down": 8
+      },
+      5,
+      3
+    ],
+    [
+      {
+        "across": 19
+      },
+      3,
+      7,
+      4,
+      5
+    ],
+    [
+      {
+        "across": 14
+      },
+      7,
+      1,
+      2,
+      4
+    ]
+  ],
+  "ga_best_grid": [
+    [
+      "#",
+      "#",
+      "#",
+      {
+        "down": 19
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 10
+      },
+      8,
+      2
+    ],
+    [
+      "#",
+      {
+        "down": 10
+      },
+      {
+        "across": 8,
+        "down": 8
+      },
+      5,
+      3
+    ],
+    [
+      {
+        "across": 19
+      },
+      3,
+      7,
+      4,
+      5
+    ],
+    [
+      {
+        "across": 14
+      },
+      7,
+      1,
+      2,
+      4
+    ]
+  ],
+  "best_candidate_grid": [
+    [
+      "#",
+      "#",
+      "#",
+      {
+        "down": 19
+      },
+      {
+        "down": 14
+      }
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 10
+      },
+      8,
+      2
+    ],
+    [
+      "#",
+      {
+        "down": 10
+      },
+      {
+        "across": 8,
+        "down": 8
+      },
+      5,
+      3
+    ],
+    [
+      {
+        "across": 19
+      },
+      3,
+      7,
+      4,
+      5
+    ],
+    [
+      {
+        "across": 14
+      },
+      7,
+      1,
+      2,
+      4
+    ]
+  ]
+}

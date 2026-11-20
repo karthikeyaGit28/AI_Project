@@ -1,0 +1,124 @@
+{
+  "format": "kakuro-grid-v1",
+  "generator": "rectangular-bands-v1",
+  "dimension_convention": "full board including top and left clue borders",
+  "rows": 8,
+  "columns": 8,
+  "seed": 42,
+  "grid": [
+    [
+      "#",
+      {
+        "down": 38
+      },
+      {
+        "down": 33
+      },
+      {
+        "down": 28
+      },
+      {
+        "down": 20
+      },
+      {
+        "down": 18
+      },
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 30
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 28
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      {
+        "down": 25
+      },
+      {
+        "down": 27
+      }
+    ],
+    [
+      {
+        "across": 28
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "across": 35
+      },
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      {
+        "across": 15
+      },
+      null,
+      null,
+      null,
+      "#",
+      {
+        "across": 17
+      },
+      null,
+      null
+    ],
+    [
+      {
+        "across": 11
+      },
+      null,
+      null,
+      null,
+      "#",
+      {
+        "across": 10
+      },
+      null,
+      null
+    ],
+    [
+      {
+        "across": 9
+      },
+      null,
+      null,
+      null,
+      "#",
+      {
+        "across": 6
+      },
+      null,
+      null
+    ]
+  ]
+}

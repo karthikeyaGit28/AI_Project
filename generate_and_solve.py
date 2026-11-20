@@ -404,6 +404,8 @@ def main(argv=None):
 
     start = time.perf_counter()
     solution = None
+    memetic_diagnostics = None
+    fallback_seconds = 0.0
     evaluations = backtracking_count = 0
     algorithm = "constraint propagation"
     error_message = None
@@ -414,14 +416,22 @@ def main(argv=None):
     else:
         across_runs = [run for run in runs if run["direction"] == "across"]
         down_runs = [run for run in runs if run["direction"] == "down"]
-        algorithm = "genetic algorithm"
-        solution, evaluations = genetic_search(
+        # The hybrid's evolutionary phase now uses Lamarckian local search on
+        # selected offspring. Keep exact backtracking as the completeness
+        # fallback when the bounded memetic search does not find a solution.
+        from kakuro_memetic import memetic_search
+
+        algorithm = "memetic search"
+        solution, memetic_diagnostics = memetic_search(
             whites, across_runs, down_runs, domains, args.seed,
             population_size=args.population_size, generations=args.generations,
         )
+        evaluations = memetic_diagnostics["evaluations"]
         if solution is None:
-            algorithm = "backtracking fallback"
+            algorithm = "memetic search + backtracking fallback"
+            fallback_started = time.perf_counter()
             solution, backtracking_count = backtracking_search(whites, runs, domains)
+            fallback_seconds = time.perf_counter() - fallback_started
         if solution is None:
             error_message = "puzzle has no solution"
     elapsed_seconds = time.perf_counter() - start
@@ -447,6 +457,22 @@ def main(argv=None):
             "solution_validity_rate_percent": 100.0 if valid else 0.0,
         },
     }
+    if memetic_diagnostics is not None:
+        result["metrics"].update({
+            "memetic_time_seconds": round(memetic_diagnostics["execution_time_seconds"], 6),
+            "fallback_time_seconds": round(fallback_seconds, 6),
+            "generations_evaluated": memetic_diagnostics["generations_evaluated"],
+            "best_memetic_fitness": memetic_diagnostics["best_fitness"],
+            "memetic_stop_reason": memetic_diagnostics["stop_reason"],
+            "memetic_restarts": memetic_diagnostics["restarts"],
+            "local_search_calls": memetic_diagnostics["local_search_calls"],
+            "local_search_steps": memetic_diagnostics["local_search_steps"],
+            "local_search_neighbours": memetic_diagnostics["local_search_neighbours"],
+            "local_search_improving_moves": memetic_diagnostics["local_search_improving_moves"],
+            "local_search_sideways_moves": memetic_diagnostics["local_search_sideways_moves"],
+            "local_search_fitness_reduction": memetic_diagnostics["local_search_fitness_reduction"],
+            "local_search_time_seconds": round(memetic_diagnostics["local_search_time_seconds"], 6),
+        })
     if error_message:
         result["error"] = error_message
     try:

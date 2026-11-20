@@ -1,0 +1,826 @@
+{
+  "algorithm": "memetic",
+  "seed": 42,
+  "status": "solved",
+  "metrics": {
+    "execution_time_seconds": 34.034832,
+    "preprocessing_time_seconds": 0.034852,
+    "ga_time_seconds": 33.999978,
+    "fallback_time_seconds": 0.0,
+    "genetic_fitness_evaluations": 8480,
+    "generations_evaluated": 53,
+    "backtracking_count": 0,
+    "solution_valid": true,
+    "ga_solution_valid": true,
+    "fallback_used": false,
+    "best_ga_fitness": 0,
+    "final_fitness": 0,
+    "ga_satisfied_runs_percent": 100.0,
+    "final_satisfied_runs_percent": 100.0,
+    "white_cells_solved": 97,
+    "white_cells_total": 97,
+    "run_count": 34,
+    "domain_reduction_percent": 10.194730813287512,
+    "solution_validity_rate_percent": 100.0,
+    "search_time_seconds": null,
+    "search_branches": null,
+    "search_nodes": null,
+    "cp_sat_conflicts": null,
+    "solver_status": "SOLVED",
+    "memetic_stop_reason": "solved_by_local_search",
+    "memetic_restarts": 0,
+    "local_search_calls": 1196,
+    "local_search_steps": 95062,
+    "local_search_neighbours": 2839756,
+    "local_search_improving_moves": 22425,
+    "local_search_sideways_moves": 24355,
+    "local_search_fitness_reduction": 199990,
+    "local_search_time_seconds": 32.455928
+  },
+  "ga_diagnostics": {
+    "evaluations": 8480,
+    "generations_evaluated": 53,
+    "best_fitness": 0,
+    "fitness_history": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "restarts": 0,
+    "mutation_rate_min": 0.25,
+    "mutation_rate_max": 0.4515,
+    "local_search_calls": 1196,
+    "local_search_steps": 95062,
+    "local_search_neighbours": 2839756,
+    "local_search_improving_moves": 22425,
+    "local_search_sideways_moves": 24355,
+    "local_search_fitness_reduction": 199990,
+    "local_search_solutions": 1,
+    "local_search_time_seconds": 32.455928398878314,
+    "stop_reason": "solved_by_local_search",
+    "settings": {
+      "local_search_rate": 0.15,
+      "local_search_steps": 150,
+      "local_search_patience": 25,
+      "neighbourhood_limit": 128,
+      "random_neighbours": 8,
+      "time_limit_seconds": 89.97386122503667
+    },
+    "execution_time_seconds": 33.99880010006018
+  },
+  "solved_grid": [
+    [
+      "#",
+      {
+        "down": 15
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 45
+      },
+      {
+        "down": 45
+      },
+      {
+        "down": 21
+      },
+      {
+        "down": 19
+      },
+      "#",
+      "#",
+      "#",
+      {
+        "down": 25
+      },
+      {
+        "down": 30
+      }
+    ],
+    [
+      {
+        "across": 32
+      },
+      7,
+      9,
+      8,
+      4,
+      1,
+      3,
+      "#",
+      "#",
+      {
+        "across": 13
+      },
+      6,
+      7
+    ],
+    [
+      {
+        "across": 36
+      },
+      8,
+      4,
+      5,
+      9,
+      3,
+      7,
+      {
+        "down": 45
+      },
+      {
+        "down": 45
+      },
+      {
+        "across": 15,
+        "down": 45
+      },
+      7,
+      8
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 45
+      },
+      9,
+      6,
+      8,
+      1,
+      7,
+      3,
+      4,
+      5,
+      2
+    ],
+    [
+      "#",
+      {
+        "down": 40
+      },
+      {
+        "across": 45,
+        "down": 35
+      },
+      1,
+      7,
+      9,
+      8,
+      5,
+      6,
+      2,
+      4,
+      3
+    ],
+    [
+      {
+        "across": 17
+      },
+      8,
+      2,
+      6,
+      1,
+      "#",
+      {
+        "across": 22
+      },
+      8,
+      2,
+      5,
+      1,
+      6
+    ],
+    [
+      {
+        "across": 10
+      },
+      3,
+      1,
+      4,
+      2,
+      {
+        "down": 19
+      },
+      {
+        "across": 25,
+        "down": 18
+      },
+      6,
+      5,
+      8,
+      2,
+      4
+    ],
+    [
+      {
+        "across": 45
+      },
+      2,
+      5,
+      3,
+      8,
+      4,
+      6,
+      1,
+      7,
+      9,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 45
+      },
+      7,
+      6,
+      2,
+      5,
+      3,
+      4,
+      9,
+      8,
+      1,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 45
+      },
+      5,
+      8,
+      7,
+      3,
+      1,
+      2,
+      4,
+      9,
+      6,
+      {
+        "down": 15
+      },
+      {
+        "down": 13
+      }
+    ],
+    [
+      {
+        "across": 13
+      },
+      9,
+      4,
+      "#",
+      {
+        "across": 31
+      },
+      5,
+      1,
+      2,
+      4,
+      3,
+      7,
+      9
+    ],
+    [
+      {
+        "across": 15
+      },
+      6,
+      9,
+      "#",
+      {
+        "across": 34
+      },
+      6,
+      5,
+      3,
+      1,
+      7,
+      8,
+      4
+    ]
+  ],
+  "ga_best_grid": [
+    [
+      "#",
+      {
+        "down": 15
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 45
+      },
+      {
+        "down": 45
+      },
+      {
+        "down": 21
+      },
+      {
+        "down": 19
+      },
+      "#",
+      "#",
+      "#",
+      {
+        "down": 25
+      },
+      {
+        "down": 30
+      }
+    ],
+    [
+      {
+        "across": 32
+      },
+      7,
+      9,
+      8,
+      4,
+      1,
+      3,
+      "#",
+      "#",
+      {
+        "across": 13
+      },
+      6,
+      7
+    ],
+    [
+      {
+        "across": 36
+      },
+      8,
+      4,
+      5,
+      9,
+      3,
+      7,
+      {
+        "down": 45
+      },
+      {
+        "down": 45
+      },
+      {
+        "across": 15,
+        "down": 45
+      },
+      7,
+      8
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 45
+      },
+      9,
+      6,
+      8,
+      1,
+      7,
+      3,
+      4,
+      5,
+      2
+    ],
+    [
+      "#",
+      {
+        "down": 40
+      },
+      {
+        "across": 45,
+        "down": 35
+      },
+      1,
+      7,
+      9,
+      8,
+      5,
+      6,
+      2,
+      4,
+      3
+    ],
+    [
+      {
+        "across": 17
+      },
+      8,
+      2,
+      6,
+      1,
+      "#",
+      {
+        "across": 22
+      },
+      8,
+      2,
+      5,
+      1,
+      6
+    ],
+    [
+      {
+        "across": 10
+      },
+      3,
+      1,
+      4,
+      2,
+      {
+        "down": 19
+      },
+      {
+        "across": 25,
+        "down": 18
+      },
+      6,
+      5,
+      8,
+      2,
+      4
+    ],
+    [
+      {
+        "across": 45
+      },
+      2,
+      5,
+      3,
+      8,
+      4,
+      6,
+      1,
+      7,
+      9,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 45
+      },
+      7,
+      6,
+      2,
+      5,
+      3,
+      4,
+      9,
+      8,
+      1,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 45
+      },
+      5,
+      8,
+      7,
+      3,
+      1,
+      2,
+      4,
+      9,
+      6,
+      {
+        "down": 15
+      },
+      {
+        "down": 13
+      }
+    ],
+    [
+      {
+        "across": 13
+      },
+      9,
+      4,
+      "#",
+      {
+        "across": 31
+      },
+      5,
+      1,
+      2,
+      4,
+      3,
+      7,
+      9
+    ],
+    [
+      {
+        "across": 15
+      },
+      6,
+      9,
+      "#",
+      {
+        "across": 34
+      },
+      6,
+      5,
+      3,
+      1,
+      7,
+      8,
+      4
+    ]
+  ],
+  "best_candidate_grid": [
+    [
+      "#",
+      {
+        "down": 15
+      },
+      {
+        "down": 13
+      },
+      {
+        "down": 45
+      },
+      {
+        "down": 45
+      },
+      {
+        "down": 21
+      },
+      {
+        "down": 19
+      },
+      "#",
+      "#",
+      "#",
+      {
+        "down": 25
+      },
+      {
+        "down": 30
+      }
+    ],
+    [
+      {
+        "across": 32
+      },
+      7,
+      9,
+      8,
+      4,
+      1,
+      3,
+      "#",
+      "#",
+      {
+        "across": 13
+      },
+      6,
+      7
+    ],
+    [
+      {
+        "across": 36
+      },
+      8,
+      4,
+      5,
+      9,
+      3,
+      7,
+      {
+        "down": 45
+      },
+      {
+        "down": 45
+      },
+      {
+        "across": 15,
+        "down": 45
+      },
+      7,
+      8
+    ],
+    [
+      "#",
+      "#",
+      {
+        "across": 45
+      },
+      9,
+      6,
+      8,
+      1,
+      7,
+      3,
+      4,
+      5,
+      2
+    ],
+    [
+      "#",
+      {
+        "down": 40
+      },
+      {
+        "across": 45,
+        "down": 35
+      },
+      1,
+      7,
+      9,
+      8,
+      5,
+      6,
+      2,
+      4,
+      3
+    ],
+    [
+      {
+        "across": 17
+      },
+      8,
+      2,
+      6,
+      1,
+      "#",
+      {
+        "across": 22
+      },
+      8,
+      2,
+      5,
+      1,
+      6
+    ],
+    [
+      {
+        "across": 10
+      },
+      3,
+      1,
+      4,
+      2,
+      {
+        "down": 19
+      },
+      {
+        "across": 25,
+        "down": 18
+      },
+      6,
+      5,
+      8,
+      2,
+      4
+    ],
+    [
+      {
+        "across": 45
+      },
+      2,
+      5,
+      3,
+      8,
+      4,
+      6,
+      1,
+      7,
+      9,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 45
+      },
+      7,
+      6,
+      2,
+      5,
+      3,
+      4,
+      9,
+      8,
+      1,
+      "#",
+      "#"
+    ],
+    [
+      {
+        "across": 45
+      },
+      5,
+      8,
+      7,
+      3,
+      1,
+      2,
+      4,
+      9,
+      6,
+      {
+        "down": 15
+      },
+      {
+        "down": 13
+      }
+    ],
+    [
+      {
+        "across": 13
+      },
+      9,
+      4,
+      "#",
+      {
+        "across": 31
+      },
+      5,
+      1,
+      2,
+      4,
+      3,
+      7,
+      9
+    ],
+    [
+      {
+        "across": 15
+      },
+      6,
+      9,
+      "#",
+      {
+        "across": 34
+      },
+      6,
+      5,
+      3,
+      1,
+      7,
+      8,
+      4
+    ]
+  ]
+}
