@@ -375,26 +375,93 @@ def format_board(grid, solution):
     return board
 
 
+def format_terminal_board(board):
+    """Render the formatted puzzle board as a compact bordered text grid."""
+    if not board:
+        return []
+    widths = [max(4, max(len(row[column]) for row in board))
+              for column in range(len(board[0]))]
+    border = "+" + "+".join("-" * (width + 2) for width in widths) + "+"
+    lines = [border]
+    for row in board:
+        lines.append("|" + "|".join(
+            f" {cell:^{width}} " for cell, width in zip(row, widths)
+        ) + "|")
+        lines.append(border)
+    return lines
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--size", type=int, default=3, help="generated white-cell grid size (2-9)")
-    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--rows", type=int, help="generated full-board row count (use with --columns)")
+    parser.add_argument("--columns", type=int, help="generated full-board column count (use with --rows)")
+    parser.add_argument("--seed", type=int, default=None,
+                        help="random seed; omitted means choose a fresh seed for this run")
     parser.add_argument("--input", type=Path, help="existing puzzle to solve; default: kakuro_puzzle.json")
     parser.add_argument("--output", type=Path, default=Path("kakuro_solution.json"))
     parser.add_argument("--generate", action="store_true", help="generate and save a new puzzle at --input")
     parser.add_argument("--population-size", type=int, default=160)
     parser.add_argument("--generations", type=int, default=1500, help="GA budget; 0 uses exact fallback")
     args = parser.parse_args(argv)
+    seed = args.seed if args.seed is not None else random.SystemRandom().getrandbits(32)
     input_path = args.input if args.input is not None else Path("kakuro_puzzle.json")
     if input_path.resolve() == args.output.resolve():
         parser.error("input and output paths must be different")
     if args.population_size < 1 or args.generations < 0:
         parser.error("population size must be positive and generations must be nonnegative")
+    if (args.rows is None) != (args.columns is None):
+        parser.error("--rows and --columns must be supplied together")
+    if args.rows is not None and not args.generate:
+        parser.error("--rows and --columns require --generate")
 
     try:
         generate = args.generate or (args.input is None and not input_path.exists())
         if generate:
-            puzzle = generate_puzzle(args.size, args.seed)
+            if args.rows is None:
+                puzzle = generate_puzzle(args.size, seed)
+            else:
+                from kakuro_generator import generate_rectangular_puzzle
+
+                previous_layout = None
+                previous_grid = None
+                if args.seed is None and input_path.exists():
+                    try:
+                        previous = json.loads(input_path.read_text(encoding="utf-8-sig"))
+                        previous_grid = previous.get("grid") if isinstance(previous, dict) else None
+                        if (isinstance(previous_grid, list) and len(previous_grid) == args.rows
+                                and all(isinstance(row, list) and len(row) == args.columns
+                                        for row in previous_grid)):
+                            previous_layout = (
+                                frozenset((r, c) for r, row in enumerate(previous_grid)
+                                          for c, cell in enumerate(row) if cell == "#"),
+                                frozenset((r, c) for r, row in enumerate(previous_grid)
+                                          for c, cell in enumerate(row) if isinstance(cell, dict)),
+                            )
+                    except (OSError, ValueError):
+                        previous_layout = None
+
+                system_rng = random.SystemRandom()
+                can_vary_topology = ((args.rows >= 5 and args.columns >= 5)
+                                     or args.rows > 10 or args.columns > 10)
+                for _ in range(1000):
+                    puzzle = generate_rectangular_puzzle(args.rows, args.columns, seed)
+                    grid_candidate = puzzle["grid"]
+                    candidate_layout = (
+                        frozenset((r, c) for r, row in enumerate(grid_candidate)
+                                  for c, cell in enumerate(row) if cell == "#"),
+                        frozenset((r, c) for r, row in enumerate(grid_candidate)
+                                  for c, cell in enumerate(row) if isinstance(cell, dict)),
+                    )
+                    if (previous_layout is None
+                            or (can_vary_topology
+                                and candidate_layout[0] != previous_layout[0]
+                                and candidate_layout[1] != previous_layout[1])
+                            or (not can_vary_topology and grid_candidate != previous_grid)):
+                        break
+                    seed = system_rng.getrandbits(32)
+                else:
+                    raise ValueError("could not generate a new block and clue layout")
             input_path.write_text(json.dumps(puzzle, indent=2) + "\n", encoding="utf-8")
         else:
             puzzle = json.loads(input_path.read_text(encoding="utf-8-sig"))
@@ -406,6 +473,7 @@ def main(argv=None):
     solution = None
     memetic_diagnostics = None
     fallback_seconds = 0.0
+    solving_stage = "memetic search"
     evaluations = backtracking_count = 0
     algorithm = "constraint propagation"
     error_message = None
@@ -423,12 +491,13 @@ def main(argv=None):
 
         algorithm = "memetic search"
         solution, memetic_diagnostics = memetic_search(
-            whites, across_runs, down_runs, domains, args.seed,
+            whites, across_runs, down_runs, domains, seed,
             population_size=args.population_size, generations=args.generations,
         )
         evaluations = memetic_diagnostics["evaluations"]
         if solution is None:
             algorithm = "memetic search + backtracking fallback"
+            solving_stage = "exact backtracking fallback"
             fallback_started = time.perf_counter()
             solution, backtracking_count = backtracking_search(whites, runs, domains)
             fallback_seconds = time.perf_counter() - fallback_started
@@ -437,7 +506,10 @@ def main(argv=None):
     elapsed_seconds = time.perf_counter() - start
     valid = validate_solution(solution, whites, runs)
     result = {
+        "solver": "our hybrid",
         "algorithm": algorithm,
+        "solving_stage": solving_stage if memetic_diagnostics is not None else algorithm,
+        "seed": seed,
         "input_file": str(input_path),
         "output_file": str(args.output),
         "board": format_board(grid, solution) if valid else None,
@@ -479,7 +551,13 @@ def main(argv=None):
         args.output.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
     except OSError as error:
         parser.error(str(error))
-    print(json.dumps(result, indent=2))
+    if valid:
+        print("Solved Kakuro")
+        print("\n".join(format_terminal_board(result["board"])))
+        print(f"Valid solution: yes | Time: {elapsed_seconds:.6f} s | Seed: {seed}")
+        print(f"JSON result saved to: {args.output}")
+    else:
+        print(f"No valid solution was produced. Details saved to: {args.output}")
     if not valid:
         raise SystemExit("No valid Kakuro solution was produced.")
 

@@ -15,9 +15,24 @@ Generate a new puzzle and solve it (`--generate` replaces the specified input fi
 python generate_and_solve.py --generate --size 5 --seed 42 --input new_puzzle.json --output new_solution.json
 ```
 
+Generate a fresh rectangular puzzle with the same board dimensions each run;
+omit `--seed` to randomize both its block layout and clues:
+
+```powershell
+python generate_and_solve.py --generate --rows 10 --columns 10 --input new_puzzle.json --output new_solution.json
+```
+
+When this command reuses the same input file, the generator avoids repeating the
+previous 10x10 block and clue-cell layout. Fixed border positions remain part of
+the Kakuro format; the interior block/clue pattern and clue values are regenerated.
+
 With no arguments, the script reads `kakuro_puzzle.json` if it exists, or generates
 it if it is missing. An explicitly specified missing `--input` is an error.
 `--size` only affects generation. Input and output must be different files.
+When `--seed` is omitted, each run chooses and prints a fresh random seed; pass
+that seed explicitly to reproduce a run. Random seeds can produce different valid
+fillings when a puzzle has multiple solutions, but cannot guarantee a distinct
+solution if the puzzle has only one or the search converges to the same filling.
 
 Control the genetic search budget or use the exact solver directly:
 
@@ -85,6 +100,10 @@ all valid assignments.
 the original inner-matrix format, excluding the first row and column, with `null`
 at internal blocks/clues. `solved_grid` is the complete, unambiguous grid with
 clues and blocks preserved and white cells replaced by digits.
+
+When a solution is found, the command prints a bordered Kakuro board and a
+short timing/status line to the terminal. The `--output` file keeps the full JSON
+result and diagnostics.
 
 The metrics report total solver time, memetic and fallback times, local-search
 work, failed backtracking branches, population fitness evaluations, solved cell
